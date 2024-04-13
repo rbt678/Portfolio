@@ -1,0 +1,32 @@
+{
+    "experiencia1": {
+        "titulo": "Web design frontend",
+        "subtitulo": "IBM, Brazil | Nov 2023 - Jan 2024",
+        "texto": "<p>Criação de páginas HTML apresentadas no Figma. Estudo sobre criação de Web Content utilizando HCL WCM (Web Content Manager).</p>"
+    },
+    "experiencia2": {
+        "titulo": "Primeiro nível em pedidos SAP e SAP BC-SEC",
+        "subtitulo": "IBM, Brazil | Feb 2021 - Present",
+        "texto": "<p>Atuando diretamente com os pedidos do cliente e direcionando para os módulos corretos. SAP Basis, Controle de acesso e segurança no SAP.</p>"
+    },
+    "experiencia3": {
+        "titulo": "SAP BW",
+        "subtitulo": "IBM, Brazil | Feb 2020 - Feb 2021",
+        "texto": "<p>Modelagem de banco de dados em SAP para pequenas melhorias de acordo com os pedidos do cliente.</p>"
+    },
+    "experiencia4": {
+        "titulo": "Instrutor de computação",
+        "subtitulo": "Qualifica Brasil, Brazil | Feb 2014 - Apr 2016",
+        "texto": "<p>Aulas de pacote office, Windows, AutoCAD, 3D Max e Photoshop.</p>"
+    },
+    "experiencia5": {
+        "titulo": "Professor de informática",
+        "subtitulo": "Unicap, Brazil | Feb 2013 - Nov 2013",
+        "texto": "<p>Aulas de pacote office, HTML, Windows, CorelDraw e Flash.</p>"
+    },
+    "experiencia6": {
+        "titulo": "Fullstack Angular",
+        "subtitulo": "IBM, Brazil | Jan 2024 - Present",
+        "texto": "<p>Criação, manutenção e melhorias do aplicativo prime pets da Bradesco.</p>"
+    }    
+}

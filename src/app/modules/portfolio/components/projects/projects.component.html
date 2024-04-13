@@ -1,0 +1,18 @@
+<div class="container">
+    <h2>Projetos desenvolvidos</h2>
+
+    <ul>
+        @for (projeto of projetos(); track $index) {
+            <li>
+                <button (click)="openDialog(projeto)">
+                    <img 
+                    [src]="projeto.src" 
+                    [alt]="projeto.alt" 
+                    [attr.height]="projeto.height" 
+                    [attr.width]="projeto.width" 
+                    loading="lazy" />
+                </button>
+            </li>
+        }
+    </ul>
+</div>

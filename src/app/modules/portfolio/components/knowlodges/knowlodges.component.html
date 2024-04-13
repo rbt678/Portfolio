@@ -1,0 +1,10 @@
+<div class="container">
+    <h2>Conhecimentos</h2>
+    <ul>
+        @for (knowlodge of knowlodges(); track $index) {
+            <li>
+                <img [src]="knowlodge.src" [alt]="knowlodge.alt" width="22px" height="24px" loading="lazy">
+            </li>
+        }
+    </ul>
+</div>
