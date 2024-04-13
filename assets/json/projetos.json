@@ -1,0 +1,86 @@
+{
+    "projeto1": {
+        "src": "assets/img/projects/vfull.png",
+        "alt": "Projeto Vida Fullstack",
+        "height": "51px",
+        "width": "100px",
+        "title": "Vida Fullstack",
+        "description": "<p>Explore o fascinante mundo do desenvolvimento web.</p>",
+        "links": [
+            {
+                "name": "Conheça o blog",
+                "href": "https://vidafullstack.com.br"
+            }
+        ]
+    },
+    "projeto2": {
+        "src": "assets/img/projects/vfull.png",
+        "alt": "Projeto Vida Fullstack",
+        "height": "51px",
+        "width": "100px",
+        "title": "Vida Fullstack",
+        "description": "<p>Explore o fascinante mundo do desenvolvimento web.</p>",
+        "links": [
+            {
+                "name": "Conheça o blog",
+                "href": "https://vidafullstack.com.br"
+            }
+        ]
+    },
+    "projeto3": {
+        "src": "assets/img/projects/vfull.png",
+        "alt": "Projeto Vida Fullstack",
+        "height": "51px",
+        "width": "100px",
+        "title": "Vida Fullstack",
+        "description": "<p>Explore o fascinante mundo do desenvolvimento web.</p>",
+        "links": [
+            {
+                "name": "Conheça o blog",
+                "href": "https://vidafullstack.com.br"
+            }
+        ]
+    },
+    "projeto4": {
+        "src": "assets/img/projects/vfull.png",
+        "alt": "Projeto Vida Fullstack",
+        "height": "51px",
+        "width": "100px",
+        "title": "Vida Fullstack",
+        "description": "<p>Explore o fascinante mundo do desenvolvimento web.</p>",
+        "links": [
+            {
+                "name": "Conheça o blog",
+                "href": "https://vidafullstack.com.br"
+            }
+        ]
+    },
+    "projeto5": {
+        "src": "assets/img/projects/vfull.png",
+        "alt": "Projeto Vida Fullstack",
+        "height": "51px",
+        "width": "100px",
+        "title": "Vida Fullstack",
+        "description": "<p>Explore o fascinante mundo do desenvolvimento web.</p>",
+        "links": [
+            {
+                "name": "Conheça o blog",
+                "href": "https://vidafullstack.com.br"
+            }
+        ]
+    },
+    "projeto6": {
+        "src": "assets/img/projects/vfull.png",
+        "alt": "Projeto Vida Fullstack",
+        "height": "51px",
+        "width": "100px",
+        "title": "Vida Fullstack",
+        "description": "<p>Explore o fascinante mundo do desenvolvimento web.</p>",
+        "links": [
+            {
+                "name": "Conheça o blog",
+                "href": "https://vidafullstack.com.br"
+            }
+        ]
+    }
+}
