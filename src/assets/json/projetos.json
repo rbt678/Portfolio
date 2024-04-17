@@ -1,15 +1,15 @@
 {
     "projeto1": {
-        "src": "assets/img/projects/vfull.png",
-        "alt": "Projeto Teste",
-        "height": "51px",
-        "width": "100px",
-        "title": "Teste",
-        "description": "<p>bla bla bla.</p>",
+        "src": "assets/img/projects/lista-de-tarefas.png",
+        "alt": "Projeto Lista de Tarefas",
+        "width": "84px",
+        "height": "86px",
+        "title": "Lista de Tarefas",
+        "description": "<p>Uma lista de tarefas simples, para reconhecimento das capacidades do Angular</p>",
         "links": [
             {
-                "name": "depois coloco algo",
-                "href": "_blank"
+                "name": "Lista de Tarefas feito em Angular",
+                "href": "https://rbt678.github.io/ListaDeTarefas/"
             }
         ]
     }
