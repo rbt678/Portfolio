@@ -1,8 +1,8 @@
 <div class="container">
-    <h2>Conhecimentos</h2>
+    <h2>Conhecimentos Principais</h2>
     <ul>
         @for (knowlodge of knowlodges(); track $index) {
-            <li>
+            <li [attr.data-alt]="knowlodge.data_alt">
                 <img [src]="knowlodge.src" [alt]="knowlodge.alt" width="22px" height="24px" loading="lazy">
             </li>
         }

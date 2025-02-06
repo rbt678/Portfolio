@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palworld Passive Skills</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            transition: background 0.5s ease;
+        }
+
+        header {
+            text-align: center;
+            margin: 30px 0;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #4CAF50;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        #searchInput {
+            width: 90%;
+            max-width: 600px;
+            padding: 15px;
+            margin-bottom: 30px;
+            border: none;
+            border-radius: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-size: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #searchInput:focus {
+            transform: scale(1.02);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+            outline: none;
+        }
+
+        table {
+            width: 90%;
+            max-width: 1200px;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: slideUp 1s ease-in-out;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+            border: none;
+            background-color: #fff;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+            cursor: pointer;
+        }
+
+        tr.selected {
+            background-color: #d4edda;
+        }
+
+        tr.disabled {
+            background-color: #f8d7da;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .slots-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        .slot {
+            flex: 1;
+            padding: 15px;
+            border: 2px dashed #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            text-align: center;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .slot.empty {
+            border-color: #ccc;
+        }
+
+        .slot.filled {
+            border-color: #4CAF50;
+            background-color: #e8f5e9;
+        }
+
+        .summary {
+            margin-top: 30px;
+            width: 90%;
+            max-width: 1200px;
+            padding: 15px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .summary h2 {
+            margin-top: 0;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        footer {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Palworld Passive Skills</h1>
+    </header>
+
+    <input type="text" id="searchInput" placeholder="Search for anything..." onkeyup="filterTable()">
+
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Tier</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data will be inserted here dynamically -->
+        </tbody>
+    </table>
+
+    <div class="slots-container">
+        <div class="slot empty" data-index="0">Slot 1</div>
+        <div class="slot empty" data-index="1">Slot 2</div>
+        <div class="slot empty" data-index="2">Slot 3</div>
+        <div class="slot empty" data-index="3">Slot 4</div>
+    </div>
+
+    <div class="summary">
+        <h2>Summary of Effects</h2>
+        <p id="summaryText">No effects selected yet.</p>
+    </div>
+
+    <script>
+        const data = [
+            { "Name": "Lucky", "Tier": "DIAMOND", "Description": "Work Speed: +15%; Attack: +15%" },
+            { "Name": "Swift", "Tier": "DIAMOND", "Description": "Movement Speed: +30%" },
+            { "Name": "Legend", "Tier": "DIAMOND", "Description": "Attack: +20%; Defense: +20%; Movement Speed: +15%" },
+            { "Name": "Siren of the Void", "Tier": "DIAMOND", "Description": "Dark Attack Damage: +30%; Ice Attack Damage: +30%" },
+            { "Name": "Eternal Flame", "Tier": "DIAMOND", "Description": "Fire Attack Damage: +30%; Lightning Attack Damage: +30%" },
+            { "Name": "Remarkable Craftmanship", "Tier": "DIAMOND", "Description": "Work Speed: +75%" },
+            { "Name": "Diamond Body", "Tier": "DIAMOND", "Description": "Defense: +30%" },
+            { "Name": "Invader", "Tier": "DIAMOND", "Description": "Dark Attack Damage: +30%; Dragon Attack Damage: +30%" },
+            { "Name": "Demon God", "Tier": "DIAMOND", "Description": "Attack: +30%; Defense: +5%" },
+            { "Name": "Mastery of Fasting", "Tier": "DIAMOND", "Description": "Hunger Rate: -30%" },
+            { "Name": "Heart of the Immovable King", "Tier": "DIAMOND", "Description": "SAN Drain Rate: -20%" },
+            { "Name": "Eternal Engine", "Tier": "DIAMOND", "Description": "Max Stamina: +75% (Rideable Pals Only)" },
+            { "Name": "Vampiric", "Tier": "DIAMOND", "Description": "Life Steal; Nocturnal Work" },
+            { "Name": "Burly Body", "Tier": "S", "Description": "Defense: +20%" },
+            { "Name": "Motivational Leader", "Tier": "S", "Description": "Player Work Speed: +25%" },
+            { "Name": "Stronghold Strategist", "Tier": "S", "Description": "Player Defense: +10%" },
+            { "Name": "Workaholic", "Tier": "S", "Description": "SAN Drain Rate: -15%" },
+            { "Name": "Vanguard", "Tier": "S", "Description": "Player Attack: +10%" },
+            { "Name": "Logging Foreman", "Tier": "S", "Description": "Player Logging Efficiency: +25%" },
+            { "Name": "Artisan", "Tier": "S", "Description": "Work Speed: +50%" },
+            { "Name": "Diet Lover", "Tier": "S", "Description": "Hunger Rate: -15%" },
+            { "Name": "Mine Foreman", "Tier": "S", "Description": "Player Mining Efficiency: +25%" },
+            { "Name": "Ferocious", "Tier": "S", "Description": "Attack: +20%" },
+            { "Name": "Divine Dragon", "Tier": "S", "Description": "Dragon Attack Damage: +20%" },
+            { "Name": "Lord of Lightning", "Tier": "S", "Description": "Lightning Attack Damage: +20%" },
+            { "Name": "Lord of the Underworld", "Tier": "S", "Description": "Dark Attack Damage: +20%" },
+            { "Name": "Spirit Emperor", "Tier": "S", "Description": "Grass Attack Damage: +20%" },
+            { "Name": "Celestial Emperor", "Tier": "S", "Description": "Normal Attack Damage: +20%" },
+            { "Name": "Flame Emperor", "Tier": "S", "Description": "Fire Attack Damage: +20%" },
+            { "Name": "Ice Emperor", "Tier": "S", "Description": "Ice Attack Damage: +20%" },
+            { "Name": "Lord of the Sea", "Tier": "S", "Description": "Water Attack Damage: +20%" },
+            { "Name": "Earth Emperor", "Tier": "S", "Description": "Earth Attack Damage: +20%" },
+            { "Name": "Philanthropist", "Tier": "S", "Description": "Breeding Speed: +100%" },
+            { "Name": "Noble", "Tier": "S", "Description": "Sale Price: +5%" },
+            { "Name": "Serenity", "Tier": "S", "Description": "Skill Cooldown: -30%; Attack: +10%" },
+            { "Name": "Infinite Stamina", "Tier": "S", "Description": "Max Stamina: +50% (Rideable Pals Only)" },
+            { "Name": "Runner", "Tier": "A", "Description": "Movement Speed: +20%" },
+            { "Name": "Musclehead", "Tier": "A", "Description": "Attack: +30%; Work Speed: -50%" },
+            { "Name": "Botanical Barrier", "Tier": "B", "Description": "Grass Damage Taken: -10%" },
+            { "Name": "Earthquake Resistant", "Tier": "B", "Description": "Ground Damage Taken: -10%" },
+            { "Name": "Zen Mind", "Tier": "B", "Description": "Neutral Attack Damage: +10%" },
+            { "Name": "Dragonkiller", "Tier": "B", "Description": "Dragon Damage Taken: -10%" },
+            { "Name": "Insulated Body", "Tier": "B", "Description": "Lightning Damage Taken: -10%" },
+            { "Name": "Brave", "Tier": "B", "Description": "Attack: +10%" },
+            { "Name": "Fragrant Foliage", "Tier": "B", "Description": "Grass Attack Damage: +10%" },
+            { "Name": "Blood of the Dragon", "Tier": "B", "Description": "Dragon Attack Damage: +10%" },
+            { "Name": "Heated Body", "Tier": "B", "Description": "Ice Damage Taken: -10%" },
+            { "Name": "Positive Thinker", "Tier": "B", "Description": "SAN Drain Rate: -10%" },
+            { "Name": "Pyromaniac", "Tier": "B", "Description": "Fire Attack Damage: +10%" },
+            { "Name": "Abnormal", "Tier": "B", "Description": "Neutral Damage Taken: -10%" },
+            { "Name": "Cheery", "Tier": "B", "Description": "Dark Damage Taken: -10%" },
+            { "Name": "Nimble", "Tier": "B", "Description": "Movement Speed: +10%" },
+            { "Name": "Sadist", "Tier": "B", "Description": "Attack: +15%; Defense: -15%" },
+            { "Name": "Capacitor", "Tier": "B", "Description": "Lightning Attack Damage: +10%" },
+            { "Name": "Aggressive", "Tier": "B", "Description": "Attack: +10%; Defense: -10%" },
+            { "Name": "Waterproof", "Tier": "B", "Description": "Water Damage Taken: -10%" },
+            { "Name": "Dainty Eater", "Tier": "B", "Description": "Hunger Rate: -10%" },
+            { "Name": "Coldblooded", "Tier": "B", "Description": "Ice Attack Damage: +10%" },
+            { "Name": "Hooligan", "Tier": "B", "Description": "Attack: +15%; Work Speed: -10%" },
+            { "Name": "Serious", "Tier": "B", "Description": "Work Speed: +20%" },
+            { "Name": "Masochist", "Tier": "B", "Description": "Defense: +15%; Attack: -15%" },
+            { "Name": "Power of Gaia", "Tier": "B", "Description": "Earth Attack Damage: +10%" },
+            { "Name": "Suntan Lover", "Tier": "B", "Description": "Fire Damage Taken: -10%" },
+            { "Name": "Conceited", "Tier": "B", "Description": "Work Speed: +10%; Defense: -10%" },
+            { "Name": "Veil of Darkness", "Tier": "B", "Description": "Dark Attack Damage: +10%" },
+            { "Name": "Hard Skin", "Tier": "B", "Description": "Defense: +10%" },
+            { "Name": "Hydromaniac", "Tier": "B", "Description": "Water Attack Damage: +10%" },
+            { "Name": "Work Slave", "Tier": "B", "Description": "Work Speed: +30%; Attack: -30%" },
+            { "Name": "Fit as a Fiddle", "Tier": "B", "Description": "Max Stamina: +25% (Rideable Pals Only)" },
+            { "Name": "Nocturnal", "Tier": "B", "Description": "Nocturnal Work" },
+            { "Name": "Fine Furs", "Tier": "B", "Description": "Sale Price: +3%" },
+            { "Name": "Impatient", "Tier": "B", "Description": "Skill Cooldown: -15%" },
+            { "Name": "Otherworldly Cells", "Tier": "B", "Description": "Attack: +10%; Fire Damage Taken: -15%; Lightning Damage Taken: -15%" },
+            { "Name": "Coward", "Tier": "C", "Description": "Attack: -10%" },
+            { "Name": "Unstable", "Tier": "C", "Description": "SAN Drain Rate: +10%" },
+            { "Name": "Glutton", "Tier": "C", "Description": "Hunger Rate: +10%" },
+            { "Name": "Downtrodden", "Tier": "C", "Description": "Defense: -10%" },
+            { "Name": "Clumsy", "Tier": "C", "Description": "Work Speed: -10%" },
+            { "Name": "Mercy Hit", "Tier": "C", "Description": "Pacifist (No Lethal Damage)" },
+            { "Name": "Easygoing", "Tier": "C", "Description": "Skill Cooldown: +15%" },
+            { "Name": "Shabby", "Tier": "C", "Description": "Sale Price: -10%" },
+            { "Name": "Sickly", "Tier": "C", "Description": "Max Stamina: -25% (Rideable Pals Only)" },
+            { "Name": "Destructive", "Tier": "D", "Description": "SAN Drain Rate: +15%" },
+            { "Name": "Bottomless Stomach", "Tier": "D", "Description": "Hunger Rate: +15%" },
+            { "Name": "Pacifist", "Tier": "E", "Description": "Attack: -20%" },
+            { "Name": "Slacker", "Tier": "E", "Description": "Work Speed: -30%" },
+            { "Name": "Brittle", "Tier": "E", "Description": "Defense: -20%" }
+        ];
+
+        let selectedSlots = Array(4).fill(null);
+
+        function populateTable(data) {
+            const tableBody = document.querySelector("#dataTable tbody");
+            tableBody.innerHTML = "";
+            data.forEach((item, index) => {
+                const row = document.createElement("tr");
+                row.setAttribute("data-index", index);
+                row.innerHTML = `
+                <td>${item.Name}</td>
+                <td>${item.Tier}</td>
+                <td>${item.Description}</td>
+            `;
+                updateRowState(row, item);
+                row.addEventListener("click", () => selectRow(row, item));
+                tableBody.appendChild(row);
+            });
+        }
+
+        function filterTable() {
+            const input = document.getElementById("searchInput").value.toLowerCase();
+            const filteredData = data.filter(item =>
+                item.Name.toLowerCase().includes(input) ||
+                item.Tier.toLowerCase().includes(input) ||
+                item.Description.toLowerCase().includes(input)
+            );
+            populateTable(filteredData);
+        }
+
+        function selectRow(row, item) {
+            if (selectedSlots.includes(item)) {
+                alert("This passive is already selected!");
+                return;
+            }
+
+            const emptySlotIndex = selectedSlots.findIndex(slot => slot === null);
+            if (emptySlotIndex !== -1) {
+                selectedSlots[emptySlotIndex] = item;
+                updateSlots();
+                updateSummary();
+                updateRowState(row, item);
+            } else {
+                alert("All slots are filled. Remove an item first.");
+            }
+        }
+
+        function updateSlots() {
+            const slots = document.querySelectorAll(".slot");
+            slots.forEach((slot, index) => {
+                if (selectedSlots[index]) {
+                    slot.textContent = selectedSlots[index].Name;
+                    slot.classList.remove("empty");
+                    slot.classList.add("filled");
+                } else {
+                    slot.textContent = `Slot ${index + 1}`;
+                    slot.classList.remove("filled");
+                    slot.classList.add("empty");
+                }
+            });
+        }
+
+        function updateSummary() {
+            const summary = {};
+            selectedSlots.forEach(item => {
+                if (item && item.Description) {
+                    const effects = item.Description.split(";").map(effect => effect.trim());
+                    effects.forEach(effect => {
+                        // Extract numeric value and unit (e.g., "30%" or "15")
+                        const match = effect.match(/([+-]?\d+%?)/);
+                        if (match) {
+                            const numericPart = match[0];
+                            const restOfEffect = effect.replace(numericPart, "").trim();
+                            if (!summary[restOfEffect]) summary[restOfEffect] = 0;
+
+                            const numericValue = parseFloat(numericPart.replace("%", ""));
+                            summary[restOfEffect] += numericValue;
+                        }
+                    });
+                }
+            });
+
+            // Build the summary text with grouped effects
+            const summaryText = Object.keys(summary).length > 0
+                ? Object.entries(summary)
+                    .map(([key, value]) => {
+                        // Handle special cases like "increase to" vs "decrease to"
+                        const formattedKey = key.replace(/(increase|decrease) (to|in)/, "$1 $2").trim();
+                        return `${formattedKey} ${value}${key.includes("increase") || key.includes("decrease") ? "%" : ""}`;
+                    })
+                    .join("; ")
+                : "No effects selected yet.";
+            document.getElementById("summaryText").textContent = summaryText;
+        }
+
+        function updateRowState(row, item) {
+            if (selectedSlots.includes(item)) {
+                row.classList.add("disabled");
+                row.classList.remove("selected");
+            } else {
+                row.classList.remove("disabled");
+            }
+        }
+
+        document.querySelectorAll(".slot").forEach(slot => {
+            slot.addEventListener("click", () => {
+                const index = parseInt(slot.getAttribute("data-index"));
+                if (selectedSlots[index]) {
+                    const removedItem = selectedSlots[index];
+                    selectedSlots[index] = null;
+                    updateSlots();
+                    updateSummary();
+                    document.querySelectorAll("tr").forEach(row => {
+                        const rowData = data[parseInt(row.getAttribute("data-index"))];
+                        if (rowData && rowData.Name === removedItem.Name) {
+                            updateRowState(row, rowData);
+                        }
+                    });
+                }
+            });
+        });
+
+        // Initial population of the table
+        populateTable(data);
+    </script>
+
+</body>
+
+</html>

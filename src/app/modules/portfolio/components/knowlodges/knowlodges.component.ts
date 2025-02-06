@@ -13,26 +13,32 @@ export class KnowlodgesComponent {
     {
       src: "assets/icons/knowledge/angular.svg",
       alt: "Ícone de conhecimento de angular",
+      data_alt: "Conhecimento de Angular",
     },
     {
-      src: "assets/icons/knowledge/css3.svg",
-      alt: "Ícone de conhecimento de css3",
+      src: "assets/icons/knowledge/css.svg",
+      alt: "Ícone de conhecimento de css",
+      data_alt: "Conhecimento de CSS",
     },
     {
-      src: "assets/icons/knowledge/html5.svg",
-      alt: "Ícone de conhecimento de html5",
+      src: "assets/icons/knowledge/html.svg",
+      alt: "Ícone de conhecimento de html",
+      data_alt: "Conhecimento de HTML",
     },
     {
       src: "assets/icons/knowledge/javascript.svg",
       alt: "Ícone de conhecimento de javascript",
+      data_alt: "Conhecimento de JavaScript",
     },
     {
-      src: "assets/icons/knowledge/nodejs.svg",
-      alt: "Ícone de conhecimento de nodejs",
+      src: "assets/icons/knowledge/react.svg",
+      alt: "Ícone de conhecimento de react",
+      data_alt: "Conhecimento de React",
     },
     {
-      src: "assets/icons/knowledge/sass.svg",
-      alt: "Ícone de conhecimento de sass",
-    }
+      src: "assets/icons/knowledge/python.svg",
+      alt: "Ícone de conhecimento de python",
+      data_alt: "Conhecimento de Python",
+    },
   ]);
 }

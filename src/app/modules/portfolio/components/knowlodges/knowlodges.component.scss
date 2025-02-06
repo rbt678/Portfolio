@@ -32,6 +32,29 @@
             align-items: center;
 
             border-radius: 7px;
+
+            transition: transform 0.3s;
+        }
+
+        li:hover {
+            transform: scale(1.2);
+        }
+
+        li::after {
+            content: attr(data-alt);
+            display: none;
+            position: absolute;
+            top: 105%;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 5px;
+            white-space: nowrap;
+            z-index: 10;
+            border-radius: 5px;
+        }
+
+        li:hover::after {
+            display: block;
         }
     }
 }
