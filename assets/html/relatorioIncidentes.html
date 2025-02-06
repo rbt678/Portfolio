@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Relatório de Incidentes de Teste</title>
+    <style>
+        /* Variáveis para cores */
+        :root {
+            --primary-color: #0d47a1;
+            /* Azul mais escuro para uma aparência mais profissional */
+            --secondary-color: #1976d2;
+            /* Azul médio para botões e destaques */
+            --accent-color: #d84315;
+            /* Laranja escuro para mensagens de erro e destaques importantes */
+            --background-color: #f5f5f5;
+            /* Cinza claro para o fundo */
+            --text-color: #212121;
+            /* Cinza escuro para texto principal */
+            --border-color: #bdbdbd;
+            /* Cinza médio para bordas */
+            --white: #fff;
+            /* Branco */
+            --gray-light: #e0e0e0;
+            /* Cinza claro para elementos secundários */
+            --blue-light: #e3f2fd;
+            /* Azul muito claro para fundos de detalhes e hover */
+            --blue-hover: #bbdefb;
+            /* Azul claro para hover */
+            --button-hover: #1565c0;
+            /* Azul um pouco mais escuro para hover de botões */
+            --modal-overlay-color: rgba(0, 0, 0, 0.6);
+            /* Preto transparente para o overlay do modal */
+            --required-field-color: #c62828;
+            /* Vermelho escuro para campos obrigatórios */
+            --readonly-bg-color: #f5f5f5;
+            /* Cinza claro para fundo de campos somente leitura */
+            --readonly-text-color: #757575;
+            /* Cinza médio para texto de campos somente leitura */
+            --card-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* Sombra para os cards */
+        }
+
+        /* Fonte */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Fonte mais moderna e legível */
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 20px;
+            color: var(--text-color);
+        }
+
+        /* Navegação */
+        .menu {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            background-color: var(--primary-color);
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: var(--card-box-shadow);
+            /* Sombra para destacar a barra de navegação */
+        }
+
+        .menu li {
+            margin: 0 10px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            /* Transição suave */
+            font-weight: 600;
+            /* Texto em negrito para melhor legibilidade */
+        }
+
+        .menu a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            /* Efeito de elevação no hover */
+        }
+
+        /* Container do Formulário */
+        .container-testIncidentForm {
+            max-width: 900px;
+            /* Aumentando a largura máxima para melhor uso do espaço */
+            margin: 30px auto;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            /* Bordas mais arredondadas */
+            box-shadow: var(--card-box-shadow);
+            /* Sombra aprimorada */
+        }
+
+        /* Títulos */
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            border-bottom: 3px solid var(--secondary-color);
+            /* Linha mais grossa */
+            padding-bottom: 15px;
+            font-size: 2.5rem;
+            /* Tamanho de fonte maior */
+        }
+
+        h2,
+        h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            /* Tamanho de fonte maior */
+        }
+
+        /* Grupos de Formulário */
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        /* Rótulos (Labels) */
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            /* Tamanho de fonte ligeiramente maior */
+        }
+
+        /* Campos de entrada */
+        input[type="text"],
+        input[type="date"],
+        input[type="datetime-local"],
+        input[type="time"],
+        textarea,
+        select {
+            width: calc(100% - 22px);
+            /* Ajuste para a largura total menos a largura do padding */
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            /* Bordas mais arredondadas */
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            /* Transição suave */
+            margin-bottom: 10px;
+            /* Espaço abaixo dos campos */
+        }
+
+        /* Foco nos campos */
+        input[type="text"]:focus,
+        input[type="date"]:focus,
+        input[type="datetime-local"]:focus,
+        input[type="time"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 8px rgba(25, 118, 210, 0.5);
+            /* Sombra mais suave */
+        }
+
+        /* Textarea */
+        textarea {
+            height: 120px;
+            /* Altura ligeiramente maior */
+            resize: vertical;
+        }
+
+        /* Detalhes (Details) */
+        details {
+            margin: 15px 0;
+            border-radius: 12px;
+            background: var(--gray-light);
+            overflow: hidden;
+            transition: all 0.4s ease-in-out;
+            position: relative;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            /* Sombra sutil */
+        }
+
+        details:not([open]) {
+            transition: all 0.4s ease-out;
+        }
+
+        details>summary {
+            font-weight: bold;
+            cursor: pointer;
+            padding: 15px;
+            background: var(--blue-light);
+            user-select: none;
+            list-style: none;
+            display: flex;
+            /* Usar flexbox para alinhar o texto e o botão */
+            align-items: center;
+            /* Alinhar itens verticalmente */
+            justify-content: space-between;
+            /* Espaço entre o texto e o botão */
+            border-radius: 12px;
+            /* Arredondar todos os cantos */
+        }
+
+        details>summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .delete-incident-button {
+            color: var(--accent-color);
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1.2rem;
+            /* Tamanho da fonte maior para o botão */
+            line-height: 1;
+            /* Altura da linha para centralizar verticalmente */
+            padding: 5px 10px;
+            /* Espaçamento interno */
+            border-radius: 6px;
+            /* Bordas arredondadas */
+            background-color: transparent;
+            /* Fundo transparente */
+            border: none;
+            /* Sem borda */
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            /* Transição suave */
+        }
+
+        .delete-incident-button:hover {
+            background-color: var(--accent-color);
+            /* Fundo vermelho no hover */
+            color: var(--white);
+            /* Texto branco no hover */
+            transform: scale(1.1);
+            /* Aumentar ligeiramente o tamanho no hover */
+        }
+
+        details[open]>summary {
+            margin-bottom: 10px;
+            border-radius: 12px 12px 0 0;
+            /* Arredondar apenas os cantos superiores quando aberto */
+        }
+
+        details>summary:hover {
+            background: var(--blue-hover);
+        }
+
+        details>.details-content {
+            padding: 0 20px 15px;
+        }
+
+        /* Botões */
+        button {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: auto;
+            /* Largura automática para melhor ajuste */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            /* Sombra sutil */
+        }
+
+        button:hover {
+            background-color: var(--button-hover);
+            transform: translateY(-2px);
+            /* Efeito de elevação no hover */
+        }
+
+        /* Botões em grupos */
+        .form-buttons {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            /* Espaço entre os botões */
+            margin-top: 30px;
+        }
+
+        .form-buttons button {
+            flex: 1;
+            /* Distribuir igualmente o espaço disponível */
+        }
+
+        /* Erros */
+        .error {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        /* Cabeçalho do formulário */
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .expandable-text {
+            border-radius: 12px;
+            transition: all 0.4s ease-in-out;
+            background-color: var(--gray-light);
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .text-content {
+            overflow: hidden;
+            position: relative;
+            max-height: 80px;
+            transition: max-height 0.4s ease-in-out;
+            padding: 10px;
+        }
+
+        .text-content.expanded {
+            max-height: 500px;
+        }
+
+        .fade-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            background: linear-gradient(transparent, var(--gray-light));
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .expanded .fade-overlay {
+            opacity: 0;
+        }
+
+        .expand-button {
+            display: block;
+            width: calc(100% - 40px);
+            text-align: center;
+            padding: 10px;
+            margin: 10px auto;
+            background: none;
+            border: none;
+            color: #2196F3;
+            cursor: pointer;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            background-color: var(--blue-light);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .expand-button:hover {
+            background-color: var(--blue-hover);
+        }
+
+        .icon {
+            display: inline-block;
+            transition: transform 0.4s ease;
+            font-size: 1.2rem;
+        }
+
+        .expanded .icon {
+            transform: rotate(180deg);
+        }
+
+        /* Animação de Fade In */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        /* Estilização para os campos required no JavaScript */
+        .required-field::after {
+            content: " *";
+            color: var(--required-field-color);
+        }
+
+        /* Estilização para os campos readonly */
+        input[readonly],
+        textarea[readonly] {
+            background-color: var(--readonly-bg-color);
+            color: var(--readonly-text-color);
+            cursor: not-allowed;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--modal-overlay-color);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            /* Reduzindo a margem superior */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            width: 40%;
+            /* Largura responsiva */
+            max-width: 500px;
+            /* Largura máxima */
+            position: relative;
+            /* Para posicionar o botão de fechar */
+            opacity: 0;
+            /* Começa invisível */
+            transform: translateY(-50px);
+            /* Começa acima da posição final */
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            /* Transição suave */
+        }
+
+        .modal-content.show {
+            opacity: 1;
+            /* Torna visível quando mostrado */
+            transform: translateY(0);
+            /* Move para a posição final */
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            color: #aaa;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-button:hover {
+            color: #555;
+        }
+
+        .modal-form-group {
+            margin-bottom: 20px;
+        }
+
+        .modal-label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .modal-input,
+        .modal-textarea {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 10px;
+        }
+
+        .modal-input:focus,
+        .modal-textarea:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 8px rgba(25, 118, 210, 0.5);
+        }
+
+        .modal-textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .modal-button {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .modal-button:hover {
+            background-color: var(--button-hover);
+        }
+
+        /* Responsividade para modal */
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 80%;
+                /* Ajusta a largura para telas menores */
+                margin: 10% auto;
+                /* Ajusta a margem superior */
+            }
+
+            .close-button {
+                font-size: 20px;
+                /* Aumenta o tamanho do botão de fechar em telas menores */
+                top: 5px;
+                right: 10px;
+            }
+
+            .modal-input,
+            .modal-textarea {
+                font-size: 14px;
+                /* Reduz o tamanho da fonte em telas menores */
+            }
+
+            .modal-button {
+                padding: 8px 16px;
+                font-size: 14px;
+                /* Reduz o tamanho do botão e da fonte em telas menores */
+            }
+        }
+
+        /* Estilos para o cartão de relatório */
+        .report-card {
+            text-align: center;
+            width: 400px;
+            height: 130px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+            cursor: pointer;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            margin: 10px;
+            background-color: var(--white);
+        }
+
+        .report-card:hover {
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .report-card h2 {
+            color: var(--primary-color);
+            margin-top: 20px;
+            font-size: 1.5rem;
+        }
+
+        .report-card p {
+            color: var(--text-color);
+            font-size: 1rem;
+            padding: 10px;
+        }
+
+        /* Melhoria da visualização em 3D */
+        .report-card {
+            backface-visibility: hidden;
+        }
+
+        /* Responsividade para os cartões */
+        @media (max-width: 600px) {
+            .report-card {
+                width: 95%;
+            }
+        }
+
+        /* Opções */
+        #options {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            /* Permite que os itens quebrem para a próxima linha em telas menores */
+            gap: 10px;
+            /* Adiciona um espaço entre os itens */
+        }
+
+        #options>div {
+            flex: 1;
+            /* Permite que os itens cresçam e ocupem o espaço disponível */
+            min-width: 200px;
+            /* Define uma largura mínima para evitar que os itens fiquem muito estreitos */
+        }
+
+        /* Lista de Incidentes */
+        #testIncidents {
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            margin: 20px 0;
+            perspective: 1000px;
+            gap: 20px;
+            /* Adiciona um espaço entre os cartões */
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .form-buttons {
+                flex-direction: column;
+            }
+
+            .form-buttons button {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul class="menu">
+                <li><a href="#" data-screen="relatorios">Relatórios</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container" id="content">
+        <!-- Conteúdo dinâmico aqui -->
+    </main>
+
+    <!-- Modal para novo relatório -->
+    <div id="newReportModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">×</span>
+            <h2>Criar Novo Relatório</h2>
+            <div class="modal-form-group">
+                <label for="modalReportId" class="modal-label">ID do Relatório:</label>
+                <input type="text" id="modalReportId" class="modal-input" placeholder="AW-RIT-X">
+            </div>
+            <div class="modal-form-group">
+                <label for="modalSummary" class="modal-label">Resumo do Relatório:</label>
+                <textarea id="modalSummary" class="modal-textarea" placeholder="Digite o resumo aqui"></textarea>
+            </div>
+            <button id="createReportButton" class="modal-button">Criar Relatório</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.menu a');
+            const contentDiv = document.getElementById('content');
+            const newReportModal = document.getElementById('newReportModal');
+            const closeModalButton = document.querySelector('.close-button');
+            const createReportButton = document.getElementById('createReportButton');
+            let currentData = {}; // Armazena os dados do relatório atual
+
+            // Carrega a tela inicial
+            loadScreen('relatorios');
+
+            // Eventos para os links da navegação
+            navLinks.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    const screen = link.getAttribute('data-screen');
+                    loadScreen(screen);
+                });
+            });
+
+            // Função para salvar em JSON
+            function saveToJSONfile(data) {
+                const jsonString = JSON.stringify(data, null, 2);
+                const blob = new Blob([jsonString], { type: "application/json" });
+                const link = document.createElement("a");
+                link.href = URL.createObjectURL(blob);
+                link.download = "data.json";
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+
+            // Função para carregar do JSON
+            function loadFromJSONfile(fileInput) {
+                return new Promise((resolve, reject) => {
+                    const file = fileInput.files[0];
+                    if (!file) {
+                        reject("Selecione um arquivo JSON para carregar.");
+                        return;
+                    }
+
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        try {
+                            const jsonData = JSON.parse(e.target.result);
+                            resolve(jsonData);
+                        } catch (error) {
+                            reject("Erro ao ler o JSON: " + error.message);
+                        }
+                    };
+                    reader.readAsText(file);
+                });
+            }
+
+            // Função para expandir texto
+            function expandableText(content, button) {
+                content.classList.toggle('expanded');
+                button.textContent = content.classList.contains('expanded')
+                    ? 'Ler menos ▲'
+                    : 'Ler mais ▼';
+            }
+
+            // Função para criar conteúdo de tela
+            function getScreenContent(screen) {
+                const screens = {
+                    relatorio: `
+                        <div class="container-testIncidentForm">
+                            <h1>Relatório de Incidentes de Teste</h1>
+                            <form id="testIncidentForm">
+                                <div class="form-header">
+                                    <h2 id="reportId"></h2>
+                                    <div class="expandable-text">
+                                        <div id="summaryContainer" class="text-content">
+                                            <h3 id="summary"></h3>
+                                            <div class="fade-overlay"></div>
+                                        </div>
+                                        <button type="button" id="expandButton" class="expand-button">
+                                            Ler mais <span class="icon">▼</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div id="form-body"></div>
+
+                                <div class="form-buttons">
+                                    <button type="button" id="addIncidentButton">Adicionar Incidente</button>
+                                    <button type="submit">Gerar Relatório</button>
+                                </div>
+                            </form>
+                        </div>
+                    `,
+                    relatorios: `
+                        <h1>Relatórios</h1>
+                        <div id="options">
+                            <div id="option1">
+                                <label for="fileInput">Adicione o data.json aqui</label>
+                                <input type="file" id="fileInput" accept=".json"/>
+                            </div>
+                            <div id="option2">
+                                <label for="newReport">Ou crie um novo teste</label>
+                                <button id="newReport">Novo Relatório</button>
+                            </div>
+                        </div>
+                        <div id="testIncidents"></div>
+                    `,
+                    404: `<h1>404</h1><p>Tela não encontrada.</p>`
+                };
+                return screens[screen] || screens['404'];
+            }
+
+            // Função para carregar scripts de tela
+            function loadScripts(screen, dataKey = null) {
+                setTimeout(() => {
+                    if (screen === 'relatorio') {
+                        handleRelatorioScreen(dataKey);
+                    } else if (screen === 'relatorios') {
+                        handleRelatoriosScreen();
+                    }
+                }, 0);
+            }
+
+            // --- Funções para a tela de Relatório ---
+
+            function handleRelatorioScreen(dataKey) {
+                // Se não há uma chave de dados ou os dados para essa chave não existem, carregar a tela de relatórios
+                if (!dataKey || !currentData[dataKey]) {
+                    console.error("Chave de relatório inválida ou dados não encontrados para:", dataKey);
+                    loadScreen('relatorios');
+                    return;
+                }
+
+                // Clonar os dados do relatório atual para evitar modificações acidentais no objeto original
+                let reportData = JSON.parse(JSON.stringify(currentData[dataKey]));
+
+                // Elementos do DOM
+                const reportIdElement = document.getElementById('reportId');
+                const summaryElement = document.getElementById('summary');
+                const expandableSummary = document.getElementById('summaryContainer');
+                const expandButton = document.getElementById('expandButton');
+                const form = document.getElementById('testIncidentForm');
+                const formBody = document.getElementById('form-body');
+                const addIncidentButton = document.getElementById('addIncidentButton');
+
+                // Preencher cabeçalho do relatório
+                reportIdElement.textContent = reportData.reportId;
+                summaryElement.textContent = reportData.summary;
+
+                // Evento para expandir/recolher resumo
+                expandButton.addEventListener('click', () => {
+                    expandableText(expandableSummary, expandButton);
+                });
+
+                // Evento para salvar o relatório
+                form.addEventListener('submit', (event) => {
+                    event.preventDefault();
+                    currentData[dataKey] = reportData; // Atualiza os dados do relatório atual
+                    saveToJSONfile(currentData);
+                    alert("Relatório salvo com sucesso!");
+                });
+
+                // Evento para adicionar incidente
+                addIncidentButton.addEventListener('click', () => {
+                    addEmptyIncident(formBody, reportData);
+                });
+
+                // Função para criar elemento de incidente
+                function createIncidentElement(incident, incidentKey) {
+                    const details = document.createElement('details');
+                    details.open = true;
+                    const summary = document.createElement('summary');
+                    const textSummary = document.createElement('span');
+                    textSummary.className = 'text-summary';
+                    textSummary.textContent = incident.testedItem || `Incidente ${incidentKey}`;
+
+                    const deleteButton = document.createElement('button');
+                    deleteButton.className = 'delete-incident-button';
+                    deleteButton.textContent = 'X';
+                    summary.appendChild(textSummary);
+                    summary.appendChild(deleteButton);
+
+                    deleteButton.addEventListener('click', (event) => {
+                        event.stopPropagation();
+                        if (confirm('Tem certeza que deseja excluir este incidente?')) {
+                            details.remove();
+                            delete reportData.incidents[incidentKey]; // Remove o incidente do objeto
+                        }
+                    });
+                    details.appendChild(summary);
+
+                    const content = document.createElement('div');
+                    content.className = 'details-content';
+
+                    const fields = [
+                        { label: 'Identificador do incidente', placeholder: 'DM-IT-', key: 'incidentId', readonly: true },
+                        { label: 'Item testado', placeholder: 'Nome do item testado', key: 'testedItem', required: true },
+                        { label: 'Identificador do caso de teste', placeholder: 'AW-CT-ICDC-', key: 'testCaseId', readonly: true },
+                        { label: 'Dados de entrada', placeholder: 'Todos os dados de entrada', key: 'inputData', type: 'textarea', required: true },
+                        { label: 'Resultados esperados', placeholder: 'Todos os resultados esperados', key: 'expectedResults', type: 'textarea', required: true },
+                        { label: 'Resultados obtidos', placeholder: 'Todos os resultados obtidos', key: 'obtainedResults', type: 'textarea', required: true },
+                        { label: 'Observações', placeholder: 'Observações (se houver)', key: 'observations', type: 'textarea' },
+                        { label: 'Anomalias', placeholder: 'Anomalias (se houver)', key: 'anomalies' },
+                        { label: 'Data do incidente', key: 'incidentDate', type: 'datetime-local', required: true }
+                    ];
+
+                    fields.forEach(field => {
+                        const formGroup = document.createElement('div');
+                        formGroup.className = 'form-group';
+
+                        const label = document.createElement('label');
+                        label.htmlFor = `${field.key}-${incidentKey}`;
+                        label.textContent = field.label;
+                        if (field.required) {
+                            label.classList.add('required-field');
+                        }
+                        formGroup.appendChild(label);
+
+                        const input = document.createElement(field.type === 'textarea' ? 'textarea' : 'input');
+                        input.id = `${field.key}-${incidentKey}`;
+                        input.name = input.id;
+                        input.type = field.type || 'text';
+                        input.value = incident[field.key] || '';
+                        input.readOnly = field.readonly || false;
+                        input.required = field.required || false;
+                        input.placeholder = field.placeholder || '';
+
+                        input.addEventListener('input', () => {
+                            reportData.incidents[incidentKey][field.key] = input.value;
+                            if (field.key === 'testedItem') {
+                                textSummary.textContent = input.value;
+                            }
+                        });
+
+                        formGroup.appendChild(input);
+                        content.appendChild(formGroup);
+                    });
+
+                    details.appendChild(content);
+                    return details;
+                }
+
+                // Função para adicionar incidentes existentes
+                function addIncidents(formBody, reportData) {
+                    formBody.innerHTML = ''; // Limpa incidentes anteriores
+
+                    for (const incidentKey in reportData.incidents) {
+                        const incident = reportData.incidents[incidentKey];
+                        const details = createIncidentElement(incident, incidentKey);
+                        formBody.appendChild(details);
+                    }
+                }
+
+                // Função para adicionar incidente vazio
+                function addEmptyIncident(formBody, reportData) {
+                    const incidentKeys = Object.keys(reportData.incidents);
+                    const lastIncidentKey = incidentKeys.length > 0 ? incidentKeys[incidentKeys.length - 1] : 'DM-IT-00';
+                    const lastIncidentNumber = parseInt(lastIncidentKey.split('-').pop(), 10);
+                    const newIncidentNumber = lastIncidentNumber + 1;
+                    const newIncidentKey = `DM-IT-${String(newIncidentNumber).padStart(2, '0')}`;
+                    const newIncidentId = newIncidentKey;
+                    const newTestCaseId = `AW-CT-ICDC-${newIncidentNumber}`;
+
+                    const emptyIncident = {
+                        incidentId: newIncidentId,
+                        testedItem: '',
+                        testCaseId: newTestCaseId,
+                        inputData: '',
+                        expectedResults: '',
+                        obtainedResults: '',
+                        observations: '',
+                        anomalies: '',
+                        incidentDate: new Date().toISOString().slice(0, 16)
+                    };
+
+                    reportData.incidents[newIncidentKey] = emptyIncident; // Adiciona o incidente vazio ao objeto
+                    const details = createIncidentElement(emptyIncident, newIncidentKey);
+                    formBody.appendChild(details);
+                }
+
+                // Adicionar incidentes existentes ao carregar a tela
+                addIncidents(formBody, reportData);
+            }
+
+            // --- Funções para a tela de Relatórios ---
+
+            function handleRelatoriosScreen() {
+                const fileInput = document.getElementById('fileInput');
+                const testIncidents = document.getElementById('testIncidents');
+                const newReportButton = document.getElementById('newReport');
+
+                function showReport(reportKey) {
+                    loadScreen('relatorio', reportKey);
+                }
+
+                // Função para criar e exibir os cartões de relatório
+                function createReportCards(reports) {
+                    const reportsHtml = Object.entries(reports).map(([key, report]) => {
+                        return `
+                    <div id="${key}" class="report-card">
+                        <h2>${report.reportId}</h2>
+                        <p>${report.summary}</p>
+                    </div>
+                `;
+                    }).join('');
+
+                    testIncidents.innerHTML = reportsHtml;
+
+                    const cards = document.querySelectorAll('.report-card');
+                    cards.forEach(card => {
+                        card.addEventListener('mousemove', handleCardMouseMove);
+                        card.addEventListener('mouseleave', handleCardMouseLeave);
+                        card.addEventListener('click', () => {
+                            showReport(card.id);
+                        });
+                    });
+                }
+
+                function handleCardMouseMove(e) {
+                    const rect = e.target.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+
+                    const rotateX = (y - centerY) / 10;
+                    const rotateY = -(x - centerX) / 25;
+
+                    e.target.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                }
+
+                function handleCardMouseLeave(e) {
+                    e.target.style.transform = 'rotateX(0) rotateY(0)';
+                }
+
+                fileInput.addEventListener('change', () => {
+                    loadFromJSONfile(fileInput)
+                        .then(result => {
+                            currentData = result; // Atualiza os dados atuais
+                            createReportCards(result); // Cria os cartões de relatório
+                        })
+                        .catch(error => {
+                            testIncidents.innerHTML = error;
+                        });
+                });
+
+                newReportButton.addEventListener('click', () => {
+                    openModal();
+                });
+            }
+
+            // Função para carregar telas
+            function loadScreen(screen, dataKey = null) {
+                contentDiv.innerHTML = getScreenContent(screen);
+                loadScripts(screen, dataKey);
+            }
+
+            // Função para abrir o modal
+            function openModal() {
+                newReportModal.style.display = "block";
+                // Atraso para garantir que o estilo 'display: block' seja aplicado antes de adicionar a classe 'show'
+                setTimeout(() => {
+                    newReportModal.querySelector('.modal-content').classList.add('show');
+                }, 10);
+            }
+
+            // Função para fechar o modal
+            function closeModal() {
+                const modalContent = newReportModal.querySelector('.modal-content');
+                modalContent.classList.remove('show');
+                // Aguarda a transição de saída antes de definir o display como 'none'
+                modalContent.addEventListener('transitionend', function handler() {
+                    newReportModal.style.display = 'none';
+                    modalContent.removeEventListener('transitionend', handler);
+                });
+            }
+
+            // Evento para fechar o modal
+            closeModalButton.addEventListener('click', closeModal);
+
+            // Evento para criar um novo relatório
+            createReportButton.addEventListener('click', () => {
+                const reportId = document.getElementById('modalReportId').value;
+                const summary = document.getElementById('modalSummary').value;
+
+                // Validar o ID do relatório
+                if (!/^AW-RIT-\d+$/.test(reportId)) {
+                    alert("ID do relatório inválido. O formato deve ser AW-RIT-X, onde X é um número.");
+                    return;
+                }
+
+                // Verifica se o ID do relatório já existe
+                if (currentData[reportId]) {
+                    alert("Já existe um relatório com esse ID. Por favor, escolha um ID único.");
+                    return;
+                }
+
+                // Se o ID for válido e o resumo fornecido, criar o novo relatório
+                if (reportId && summary) {
+                    const newReport = {
+                        reportId,
+                        summary,
+                        incidents: {} // Inicializa com um objeto vazio para os incidentes
+                    };
+
+                    currentData[reportId] = newReport; // Adiciona o novo relatório aos dados atuais
+                    closeModal(); // Fecha o modal
+                    loadScreen('relatorio', reportId); // Carrega a tela de relatório com o ID do novo relatório
+                }
+            });
+
+            // Fechar o modal se o usuário clicar fora dele
+            window.addEventListener('click', (event) => {
+                if (event.target === newReportModal) {
+                    closeModal();
+                }
+            });
+
+            // Prevenir o envio do formulário do modal
+            newReportModal.addEventListener('submit', (event) => {
+                event.preventDefault();
+            });
+        });
+    </script>
+</body>
+
+</html>

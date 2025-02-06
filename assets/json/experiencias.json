@@ -1,32 +1,32 @@
 {
     "experiencia1": {
-        "titulo": "Web design frontend",
-        "subtitulo": "IBM, Brazil | Nov 2023 - Jan 2024",
-        "texto": "<p>Criação de páginas HTML apresentadas no Figma. Estudo sobre criação de Web Content utilizando HCL WCM (Web Content Manager).</p>"
+        "titulo": "Front-End Developer",
+        "subtitulo": "IBM, Brasil | Fevereiro 2024 - Outubro 2024",
+        "texto": "<p>Desenvolvimento e manutenção do aplicativo do Banco Bradesco utilizando Angular.</p><p>Implementação de melhorias para otimização de performance e usabilidade.</p>"
     },
     "experiencia2": {
-        "titulo": "Primeiro nível em pedidos SAP e SAP BC-SEC",
-        "subtitulo": "IBM, Brazil | Feb 2021 - Present",
-        "texto": "<p>Atuando diretamente com os pedidos do cliente e direcionando para os módulos corretos. SAP Basis, Controle de acesso e segurança no SAP.</p>"
+        "titulo": "Web Front-End Developer",
+        "subtitulo": "IBM, Brasil | Novembro 2023 - Janeiro 2024",
+        "texto": "<p>Criação e desenvolvimento de páginas HTML para o Banco Bradesco.</p><p>Análise e criação de conteúdo web utilizando HCL WCM, assegurando consistência e integração dos sistemas.</p>"
     },
     "experiencia3": {
-        "titulo": "SAP BW",
-        "subtitulo": "IBM, Brazil | Feb 2020 - Feb 2021",
-        "texto": "<p>Modelagem de banco de dados em SAP para pequenas melhorias de acordo com os pedidos do cliente.</p>"
+        "titulo": "SAP BC-SEC Analyst",
+        "subtitulo": "IBM, Brasil | Fevereiro 2021 - Novembro 2023",
+        "texto": "<p>Atendimento e direcionamento de demandas relacionadas a módulos SAP na Shell.</p><p>Atuação em SAP Basis e Security, com foco no controle de acesso e na segurança do ambiente SAP.</p>"
     },
     "experiencia4": {
-        "titulo": "Instrutor de computação",
-        "subtitulo": "Qualifica Brasil, Brazil | Feb 2014 - Apr 2016",
-        "texto": "<p>Aulas de pacote office, Windows, AutoCAD, 3D Max e Photoshop.</p>"
+        "titulo": "SAP BW Analyst",
+        "subtitulo": "IBM, Brasil | Fevereiro 2020 - Fevereiro 2021",
+        "texto": "<p>Modelagem e otimização de banco de dados SAP BW para a Heineken, contribuindo para melhorias na performance e análise de dados.</p>"
     },
     "experiencia5": {
-        "titulo": "Professor de informática",
-        "subtitulo": "Unicap, Brazil | Feb 2013 - Nov 2013",
-        "texto": "<p>Aulas de pacote office, HTML, Windows, CorelDraw e Flash.</p>"
+        "titulo": "Instrutor de Computação",
+        "subtitulo": "Qualifica Brasil | Fevereiro 2014 - Abril 2016",
+        "texto": "<p>Condução de aulas práticas sobre Pacote Office, Windows, AutoCAD, 3D Max e Photoshop, desenvolvendo habilidades técnicas dos alunos.</p>"
     },
     "experiencia6": {
-        "titulo": "Fullstack Angular",
-        "subtitulo": "IBM, Brazil | Jan 2024 - Present",
-        "texto": "<p>Criação, manutenção e melhorias do aplicativo prime pets da Bradesco.</p>"
-    }    
+        "titulo": "Professor de Informática",
+        "subtitulo": "Unicap | Fevereiro 2013 - Novembro 2013",
+        "texto": "<p>Ministrava aulas de Pacote Office, HTML, Windows, CorelDraw e Flash, promovendo o aprendizado de ferramentas essenciais.</p>"
+    }
 }

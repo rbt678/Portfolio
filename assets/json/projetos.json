@@ -8,8 +8,50 @@
         "description": "<p>Uma lista de tarefas simples, para reconhecimento das capacidades do Angular</p>",
         "links": [
             {
-                "name": "Lista de Tarefas feito em Angular",
+                "name": "Lista de Tarefas",
                 "href": "https://rbt678.github.io/ListaDeTarefas/"
+            }
+        ]
+    },
+    "projeto2": {
+        "src": "assets/img/projects/projecao-financeira.svg",
+        "alt": "Projeto Projeção Financeira",
+        "width": "84px",
+        "height": "86px",
+        "title": "Projeção Financeira",
+        "description": "<p>Permite a adição dinâmica de valores diários ou importação via JSON, com projeção e edição mensal dos dados.</p>",
+        "links": [
+            {
+                "name": "Projeção Financeira",
+                "href": "assets/html/projecaoFinanceira.html"
+            }
+        ]
+    },
+    "projeto3": {
+        "src": "assets/img/projects/relatorio-incidentes.svg",
+        "alt": "Projeto Relatório de Incidentes",
+        "width": "84px",
+        "height": "86px",
+        "title": "Relatório de Incidentes",
+        "description": "<p>Aplicação para padronizar a documentação de testes, podendo gerar e armazenar de registros em JSON, facilitando a manutenção de uma base de dados para análises futuras.</p>",
+        "links": [
+            {
+                "name": "Relatório de Incidentes",
+                "href": "assets/html/relatorioIncidentes.html"
+            }
+        ]
+    },
+    "projeto4": {
+        "src": "assets/img/projects/tabela-dinamica.png",
+        "alt": "Projeto Tabela Dinâmica",
+        "width": "84px",
+        "height": "86px",
+        "title": "Tabela Dinâmica",
+        "description": "<p>Permite análise, filtragem e soma automática de valores a partir de dados importados em formato JSON (dentro do HTML).</p>",
+        "links": [
+            {
+                "name": "Tabela Dinâmica",
+                "href": "assets/html/tabelaDinamica.html"
             }
         ]
     }
