@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Projection</title>
+    <style>
+        /* --- Reset and Base Styles --- */
+        body {
+            font-family: 'Nunito', sans-serif; /* Modern, friendly font */
+            margin: 0;
+            padding: 0;
+            background-color: #f3f7fa; /* Very light background */
+            color: #4a5568; /* Dark grey for text */
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            color: #2d3748; /* Darker grey for headings */
+        }
+
+        i {
+            pointer-events: none
+        }
+
+        /* --- Layout & Utilities (Mobile First) --- */
+        .app-container {
+            display: flex;
+            flex-direction: column; /* Stack vertically on mobile */
+            min-height: 100vh;
+        }
+
+        .main-header {
+            background-color: #fff; /* White header */
+            padding: 1rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #3182ce; /* Brand color */
+        }
+
+        .nav-toggle-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #4a5568;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .main-nav {
+            display: none; /* Initially hidden on mobile */
+            background-color: #fff;
+            padding: 1rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+        }
+
+        .main-nav.open {
+            display: block; /* Show nav when 'open' class is added */
+        }
+
+        .nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: #4a5568;
+            text-decoration: none;
+            border-radius: 0.375rem;
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+        }
+
+        .nav-link:hover, .nav-link:focus {
+            background-color: #edf2f7; /* Light hover background */
+            color: #3182ce;
+        }
+
+        .nav-link.active {
+            background-color: #3182ce;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .main-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .card {
+            background-color: #fff;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+
+        .input-group {
+            margin-bottom: 1rem;
+        }
+
+        .input-label {
+            display: block;
+            margin-bottom: 0.25rem;
+            font-weight: 500;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #cbd5e0;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+            color: #4a5568;
+            transition: border-color 0.2s ease-in-out;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #3182ce;
+            box-shadow: 0 0 0 2px rgba(49, 130, 206, 0.2);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            border-radius: 0.375rem;
+            border: none;
+            transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+        }
+
+        .btn-primary {
+            background-color: #3182ce;
+            color: #fff;
+        }
+
+        .btn-primary:hover, .btn-primary:focus {
+            background-color: #2b6cb0;
+            transform: scale(1.05);
+        }
+
+        .btn-secondary {
+            background-color: #edf2f7;
+            color: #4a5568;
+        }
+
+        .btn-secondary:hover, .btn-secondary:focus {
+            background-color: #e2e8f0;
+            color: #3182ce;
+            transform: scale(1.05);
+        }
+
+        .btn-icon {
+            padding: 0.5rem;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            line-height: 1;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: #4a5568;
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+        }
+
+        .btn-icon:hover, .btn-icon:focus {
+            background-color: #edf2f7;
+            color: #3182ce;
+        }
+
+
+        .text-center { text-align: center; }
+        .text-lg { font-size: 1.25rem; }
+        .text-sm { font-size: 0.875rem; }
+        .text-muted { color: #718096; }
+        .text-red-500 { color: #e53e3e; }
+        .text-green-500 { color: #48bb78; }
+        .font-bold { font-weight: bold; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mt-4 { margin-top: 1rem; }
+        .hidden { display: none; }
+
+
+        /* --- Table Styles --- */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1rem;
+        }
+
+        .data-table th, .data-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .data-table th {
+            font-weight: 600;
+            background-color: #f7fafc;
+        }
+
+        .data-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .table-input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #cbd5e0;
+            border-radius: 0.25rem;
+            font-size: 0.9rem;
+            color: #4a5568;
+            box-sizing: border-box; /* to include padding and border in element's total width and height */
+        }
+        .table-input:focus {
+            outline: none;
+            border-color: #3182ce;
+            box-shadow: 0 0 0 2px rgba(49, 130, 206, 0.2);
+        }
+        .table-input.input-day { width: 4rem; }
+        .table-input.input-name { width: 12rem; }
+        .table-input.input-value { width: 6rem; text-align: right; }
+
+
+        /* --- Loading Spinner --- */
+        .loading-spinner {
+            border: 4px solid #f3f3f3; /* Light grey border */
+            border-top: 4px solid #3498db; /* Blue border-top */
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 2rem auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+
+        /* --- Larger Screens (Desktop) --- */
+        @media (min-width: 768px) {
+            .app-container {
+                flex-direction: row; /* Sidebar and content side-by-side */
+            }
+
+            .main-header {
+                flex-direction: column;
+                align-items: stretch; /* Full width header in sidebar */
+                padding: 2rem 1rem;
+                justify-content: flex-start;
+            }
+
+            .logo {
+                margin-bottom: 1rem;
+                text-align: center;
+            }
+
+            .nav-toggle-btn {
+                display: none; /* Hide hamburger menu on desktop */
+            }
+
+            .main-nav {
+                display: block; /* Always show nav on desktop */
+                width: 250px; /* Fixed sidebar width */
+                height: 100vh;
+                padding: 2rem 1rem;
+                box-shadow: 3px 0 5px rgba(0, 0, 0, 0.05);
+                margin-bottom: 0; /* Remove bottom margin on desktop */
+            }
+
+            .main-content {
+                padding: 2rem;
+            }
+
+            .nav-list {
+                /* No changes needed for desktop nav list */
+            }
+
+            .nav-item {
+                /* No changes needed for desktop nav items */
+            }
+
+            .nav-link {
+                padding: 0.75rem 1.25rem;
+            }
+        }
+
+
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <div class="app-container">
+
+        <header class="main-header">
+            <h1 class="logo">My Finances</h1>
+            <button class="nav-toggle-btn" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#home" id="navbar-link-home" class="nav-link active">
+                            <i class="fas fa-home mr-2"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#projecao" id="navbar-link-projecao" class="nav-link">
+                            <i class="fas fa-chart-line mr-2"></i> Projeção
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="main-content">
+            <div id="home-page">
+                <section class="card">
+                    <h2 class="section-title">Transações</h2>
+                    <div id="table-container">
+                        <table id="data-table" class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Dia</th>
+                                    <th>Nome</th>
+                                    <th>Valor</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-tbody">
+                                <!-- Data rows will be added here by JS -->
+                            </tbody>
+                        </table>
+                        <div id="table-aviso" class="text-muted text-center mb-4 hidden">Adicione transações para começar.</div>
+                        <div class="text-center">
+                            <button id="add-item-button" class="btn-secondary btn-icon" title="Adicionar transação">
+                                <i class="fas fa-plus"></i> Adicionar Transação
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <h2 class="section-title">Valor Guardado</h2>
+                    <div class="input-group">
+                        <label for="savings-input" class="input-label">Valor Total Guardado:</label>
+                        <input type="number" id="savings-input" class="input-field text-center" step="0.01" required>
+                        <div id="savings-display-value" class="text-center mt-4 text-lg font-bold">R$ 0,00</div>
+                    </div>
+                </section>
+
+                <div class="text-center mt-4">
+                    <button id="calculate-button" class="btn btn-primary">
+                        Calcular Projeção <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+                <div id="home-error-message" class="text-red-500 text-center mt-4 hidden"></div>
+            </div>
+
+            <div id="projecao-page" class="hidden">
+                <section class="card">
+                    <h2 class="section-title">Projeção Financeira Mensal</h2>
+                    <div id="projecao-loading" class="text-center">
+                        <div class="loading-spinner"></div>
+                        <p class="text-muted">Carregando projeção...</p>
+                    </div>
+                    <div id="projecao-error-message" class="text-red-500 text-center hidden mb-4"></div>
+                    <div id="projecao-no-transactions" class="text-muted text-center hidden mb-4">Sem transações para projetar. Adicione transações na página inicial.</div>
+                    <div id="month-tables-container">
+                        <!-- Month tables will be added here by JS -->
+                    </div>
+                </section>
+            </div>
+        </main>
+
+    </div>
+
+    <script>
+        // --- UUID Fallback ---
+        const generateUUID = () => {
+            let uuid = '';
+            const chars = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.split('');
+            for (let i = 0, len = chars.length; i < len; i++) {
+                switch (chars[i]) {
+                    case 'x':
+                        uuid += Math.floor(Math.random() * 16).toString(16);
+                        break;
+                    case 'y':
+                        uuid += (Math.floor(Math.random() * 4) + 8).toString(16);
+                        break;
+                    case '-':
+                    case '4':
+                        uuid += chars[i];
+                        break;
+                }
+            }
+            return uuid;
+        };
+
+        // --- Format Utils ---
+        const formatCurrency = (value) => {
+            return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
+        };
+
+        // --- Date Utils ---
+        const obterMesString = (n) => {
+            const dataAtual = new Date();
+            const mesAtual = dataAtual.getMonth();
+            const anoAtual = dataAtual.getFullYear();
+
+            let novoMes = mesAtual + n;
+            let novoAno = anoAtual;
+
+            if (novoMes > 11) {
+                novoAno += Math.floor(novoMes / 12);
+                novoMes = novoMes % 12;
+            } else if (novoMes < 0) {
+                novoAno += Math.ceil(novoMes / 12) - 1;
+                novoMes = (novoMes % 12 + 12) % 12;
+            }
+
+            const nomesDosMeses = [
+                "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+                "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+            ];
+
+            return `${nomesDosMeses[novoMes]} de ${novoAno}`;
+        };
+
+        // --- Storage ---
+        const STORAGE_KEY = "dados";
+
+        const saveData = (transactions, savings) => {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify({ transactions: transactions, savings: savings }));
+            } catch (error) {
+                console.error("Erro ao salvar dados no localStorage:", error);
+                throw new Error("Não foi possível salvar os dados. Verifique o espaço disponível ou tente novamente mais tarde.");
+            }
+        };
+
+        const getData = () => {
+            try {
+                const data = localStorage.getItem(STORAGE_KEY);
+                if (data) {
+                    const parsedData = JSON.parse(data);
+                    const sortedTransactions = (parsedData.transactions || []).sort((a, b) => a.dia - b.dia);
+                    return {
+                        transactions: sortedTransactions,
+                        savings: parsedData.savings || 0,
+                    };
+                }
+                return { transactions: [], savings: 0 };
+            } catch (error) {
+                console.error("Erro ao ler dados do localStorage:", error);
+                throw new Error("Não foi possível carregar os dados. Tente novamente.");
+            }
+        };
+
+        const getDataMonths = () => {
+            const { transactions, savings } = getData();
+
+            if (!transactions.length) {
+                return { savings, recalculatedMonths: [] };
+            }
+            const initialTransactions = transactions.map((item) => ({
+                ...item,
+                total: 0,
+                id: item.id || generateUUID(),
+            }));
+
+            const months = Array.from({ length: 12 }, () =>
+                initialTransactions.map((item) => ({ ...item, total: 0 }))
+            );
+
+            const recalculatedMonths = recalcFromMonth(0, months, savings);
+            return { savings, recalculatedMonths };
+        };
+
+        const recalcFromMonth = (monthIndex, months, startingValue) => {
+            const newMonths = structuredClone(months); // Using structuredClone for deep copy
+            let start = startingValue;
+
+            for (let m = monthIndex; m < newMonths.length; m++) {
+                newMonths[m] = recalcMonthFromTransactions(newMonths[m], start);
+                start = newMonths[m].length > 0 ? newMonths[m][newMonths[m].length - 1].total : start;
+            }
+            return newMonths;
+        };
+
+        const recalcMonthFromTransactions = (transactions, startingValue) => {
+            let cumulative = startingValue;
+            return transactions.map((item) => {
+                cumulative += Number(item.valor);
+                return { ...item, total: cumulative };
+            });
+        };
+
+        const clearData = () => {
+            try {
+                localStorage.removeItem(STORAGE_KEY);
+            } catch (error) {
+                console.error("Erro ao limpar localStorage:", error);
+                throw new Error("Erro ao limpar dados.");
+            }
+        };
+
+
+        // --- useTransactions Hook ---
+        let transactions = [];
+        let savingsValue = 0;
+        let transactionsIsLoading = false;
+        let transactionsError = null;
+
+        const setTransactions = (updatedTransactions) => {
+            transactions = updatedTransactions.map(item => ({ ...item })); // Basic shallow copy for now
+            renderTable();
+        };
+
+        const setSavings = (value) => {
+            savingsValue = value;
+            document.getElementById('savings-input').value = savingsValue;
+            document.getElementById('savings-display-value').textContent = formatCurrency(savingsValue);
+            updateSavingsInputStyle();
+        };
+
+        const setIsLoadingTransactions = (loading) => {
+            transactionsIsLoading = loading;
+            document.getElementById('calculate-button').disabled = transactionsIsLoading;
+            document.getElementById('calculate-button').innerHTML = transactionsIsLoading ? `<div class="loading-spinner inline-block spinner-small"></div> Calculando...` : `Calcular Projeção <i class="fas fa-arrow-right ml-2"></i>`;
+        };
+
+        const setErrorTransactions = (err) => {
+            transactionsError = err;
+            const errorDiv = document.getElementById('home-error-message');
+            errorDiv.textContent = transactionsError;
+            errorDiv.classList.toggle('hidden', !transactionsError);
+        };
+
+        const updateTransactions = (updatedTransactions) => {
+            setTransactions(updatedTransactions);
+        };
+
+        const updateSavings = (value) => {
+            setSavings(value);
+        };
+
+        const saveTransactions = async () => {
+            setIsLoadingTransactions(true);
+            setErrorTransactions(null);
+            try {
+                saveData(transactions, savingsValue);
+                setIsLoadingTransactions(false);
+                navigateToProjecao();
+                return true;
+            } catch (err) {
+                setErrorTransactions(err.message);
+                setIsLoadingTransactions(false);
+                return false;
+            }
+        };
+
+        const loadTransactionsData = () => {
+            try {
+                const storedData = getData();
+                setTransactions(storedData.transactions.map(item => ({ ...item, id: item.id || generateUUID() })));
+                setSavings(storedData.savings);
+            } catch (err) {
+                setErrorTransactions(err.message || "Erro ao carregar os dados.");
+            }
+        };
+
+        // --- useProjecao Hook ---
+        let transactionsMonths = [];
+        let projecaoSavings = 0;
+        let projecaoIsLoading = false;
+        let projecaoError = null;
+
+        const setTransactionsMonths = (months) => {
+            transactionsMonths = months.map(month => month.map(item => ({ ...item }))); // Deep copy
+            renderMonthTables();
+        };
+
+        const setProjecaoIsLoading = (loading) => {
+            projecaoIsLoading = loading;
+            document.getElementById('projecao-loading').classList.toggle('hidden', !projecaoIsLoading);
+            document.getElementById('month-tables-container').classList.toggle('hidden', projecaoIsLoading);
+            document.getElementById('projecao-no-transactions').classList.add('hidden');
+            document.getElementById('projecao-error-message').classList.add('hidden');
+        };
+
+        const setProjecaoError = (err) => {
+            projecaoError = err;
+            document.getElementById('projecao-error-message').textContent = projecaoError;
+            document.getElementById('projecao-error-message').classList.toggle('hidden', !projecaoError);
+            document.getElementById('projecao-loading').classList.add('hidden');
+            document.getElementById('month-tables-container').classList.add('hidden');
+            document.getElementById('projecao-no-transactions').classList.add('hidden');
+        };
+        const setProjecaoNoTransactions = (show) => {
+            document.getElementById('projecao-no-transactions').classList.toggle('hidden', !show);
+            document.getElementById('projecao-loading').classList.add('hidden');
+            document.getElementById('month-tables-container').classList.add('hidden');
+            document.getElementById('projecao-error-message').classList.add('hidden');
+        };
+
+
+        const handleProjecaoInputChange = (monthIndex, id, field, value) => {
+            const month = transactionsMonths[monthIndex];
+            if (!month) return;
+
+            const transactionIndex = month.findIndex((t) => t.id === id);
+            if (transactionIndex === -1) return;
+
+            if (field === 'dia' || field === 'valor' || field === 'total') {
+                month[transactionIndex][field] = Number(value);
+            } else if (field === 'nome') {
+                month[transactionIndex][field] = String(value);
+            }
+
+            let startingValue = (monthIndex === 0) ? projecaoSavings : (transactionsMonths[monthIndex - 1]?.[transactionsMonths[monthIndex - 1].length - 1]?.total || projecaoSavings);
+
+            for (let m = monthIndex; m < transactionsMonths.length; m++) {
+                let cumulative = (m === monthIndex) ? (transactionIndex === 0 ? startingValue : transactionsMonths[m][transactionIndex - 1].total) : startingValue;
+
+                for (let i = (m === monthIndex ? transactionIndex : 0); i < transactionsMonths[m].length; i++) {
+                    cumulative += Number(transactionsMonths[m][i].valor);
+                    transactionsMonths[m][i].total = cumulative;
+                }
+                startingValue = transactionsMonths[m][transactionsMonths[m].length - 1]?.total || startingValue;
+            }
+            renderMonthTables();
+        };
+
+
+        const handleProjecaoDeleteItem = (monthIndex, id) => {
+            const month = transactionsMonths[monthIndex];
+            if (!month) return;
+
+            const transactionIndex = month.findIndex((t) => t.id === id);
+            if (transactionIndex === -1) return;
+
+            month[transactionIndex].removing = true;
+            renderMonthTables(); // Re-render to apply removing class
+
+            setTimeout(() => {
+                const updatedMonth = transactionsMonths[monthIndex];
+                if (!updatedMonth) return;
+
+                const updatedTransactionIndex = updatedMonth.findIndex((t) => t.id === id);
+                if (updatedTransactionIndex !== -1) {
+                    updatedMonth.splice(updatedTransactionIndex, 1);
+                }
+
+                let startingValue = (monthIndex === 0) ? projecaoSavings : (transactionsMonths[monthIndex - 1]?.[transactionsMonths[monthIndex - 1].length - 1]?.total || projecaoSavings);
+
+                for (let m = monthIndex; m < transactionsMonths.length; m++) {
+                    let cumulative = (m === monthIndex) ? startingValue : startingValue;
+                    for (let i = (m === monthIndex ? 0 : 0); i < transactionsMonths[m].length; i++) {
+                        cumulative += Number(transactionsMonths[m][i].valor);
+                        transactionsMonths[m][i].total = cumulative;
+                    }
+                    startingValue = transactionsMonths[m][transactionsMonths[m].length - 1]?.total || startingValue;
+                }
+                renderMonthTables();
+            }, 300);
+        };
+
+
+        const loadProjecaoData = () => {
+            setProjecaoIsLoading(true);
+            setProjecaoError(null);
+            try {
+                const data = getDataMonths();
+                projecaoSavings = data.savings;
+                setTransactionsMonths(data.recalculatedMonths);
+                if(data.recalculatedMonths.length === 0) {
+                    setProjecaoNoTransactions(true);
+                }
+            } catch (err) {
+                setProjecaoError(err.message || "Erro ao carregar os dados de projeção.");
+            } finally {
+                setProjecaoIsLoading(false);
+            }
+        };
+
+
+        // --- Rendering functions ---
+
+        const renderTable = () => {
+            const tbody = document.getElementById('table-tbody');
+            tbody.innerHTML = '';
+            transactions.forEach(item => {
+                const tr = document.createElement('tr');
+                tr.className = `table-row`;
+                tr.key = item.id;
+
+                tr.innerHTML = `
+                    <td>
+                        <input type="number" class="table-input table-input-day" value="${item.dia}" data-id="${item.id}" data-field="dia" min="1" max="31">
+                    </td>
+                    <td>
+                        <input type="text" class="table-input table-input-name" value="${item.nome}" data-id="${item.id}" data-field="nome">
+                    </td>
+                    <td>
+                        <input type="number" step="0.01" class="table-input table-input-value ${item.valor >= 0 ? 'text-green-500' : 'text-red-500'}" value="${item.valor}" data-id="${item.id}" data-field="valor">
+                    </td>
+                    <td>
+                        <button class="btn-secondary btn-icon delete-button" data-id="${item.id}" title="Remover transação">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+            document.getElementById('table-aviso').classList.toggle('hidden', transactions.length !== 0);
+
+            // Attach event listeners to inputs and delete buttons after rendering
+            tbody.querySelectorAll('input').forEach(input => {
+                input.addEventListener('change', (e) => {
+                    const id = e.target.dataset.id;
+                    const field = e.target.dataset.field;
+                    const value = e.target.value;
+                    handleInputChange(id, field, value);
+                });
+            });
+            tbody.querySelectorAll('.delete-button').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    handleDeleteItem(e.target.dataset.id);
+                });
+            });
+        };
+
+
+        const renderMonthTables = () => {
+            const container = document.getElementById('month-tables-container');
+            container.innerHTML = ''; // Clear existing tables
+
+            transactionsMonths.forEach((month, monthIndex) => {
+                const monthTableDiv = document.createElement('div');
+                monthTableDiv.className = "card month-table-container";
+
+                const monthNameDiv = document.createElement('h3');
+                monthNameDiv.className = "section-title text-center";
+                monthNameDiv.textContent = obterMesString(monthIndex);
+                monthTableDiv.appendChild(monthNameDiv);
+
+                const table = document.createElement('table');
+                table.className = "data-table month-table";
+                table.innerHTML = `
+                    <thead class="month-thead">
+                        <tr>
+                            <th>Dia</th>
+                            <th>Conta</th>
+                            <th>Valor</th>
+                            <th>Total</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody class="month-tbody" id="month-tbody-${monthIndex}">
+                    </tbody>
+                `;
+                monthTableDiv.appendChild(table);
+                container.appendChild(monthTableDiv);
+
+                const tbody = monthTableDiv.querySelector(`#month-tbody-${monthIndex}`);
+                month.forEach(item => {
+                    const tr = document.createElement('tr');
+                    tr.className = `month-table-row ${item.removing ? 'opacity-0 transition-opacity duration-300' : ''}`;
+                    tr.key = item.id;
+                    tr.innerHTML = `
+                        <td>
+                            <input type="number" class="table-input month-table-input month-input-day" value="${item.dia}" data-month-index="${monthIndex}" data-id="${item.id}" data-field="dia" min="1" max="31">
+                        </td>
+                        <td>
+                            <input type="text" class="table-input month-table-input month-input-name" value="${item.nome}" data-month-index="${monthIndex}" data-id="${item.id}" data-field="nome">
+                        </td>
+                        <td>
+                            <input type="number" step="0.01" class="table-input month-table-input month-input-value ${item.valor >= 0 ? 'text-green-500' : 'text-red-500'}" value="${item.valor}" data-month-index="${monthIndex}" data-id="${item.id}" data-field="valor">
+                        </td>
+                        <td class="font-bold month-total-cell ${item.total >= 0 ? 'text-green-500' : 'text-red-500'}">
+                            ${formatCurrency(item.total)}
+                        </td>
+                        <td>
+                            <button class="btn-secondary btn-icon month-delete-button" data-month-index="${monthIndex}" data-id="${item.id}" title="Remover transação">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            });
+
+            container.querySelectorAll('input').forEach(input => {
+                input.addEventListener('change', (e) => {
+                    const monthIndex = parseInt(e.target.dataset.monthIndex);
+                    const id = e.target.dataset.id;
+                    const field = e.target.dataset.field;
+                    const value = e.target.value;
+                    handleProjecaoInputChange(monthIndex, id, field, value);
+                });
+            });
+            container.querySelectorAll('.month-delete-button').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const monthIndex = parseInt(e.target.dataset.monthIndex);
+                    const id = e.target.dataset.id;
+                    handleProjecaoDeleteItem(monthIndex, id);
+                });
+            });
+
+        };
+
+
+        // --- Event Handlers ---
+
+        const handleInputChange = (id, field, value) => {
+            const updatedTransactions = transactions.map(item => {
+                if (item.id === id) {
+                    return { ...item, [field]: field === 'dia' || field === 'valor' ? Number(value) : value };
+                }
+                return item;
+            });
+            updateTransactions(updatedTransactions);
+        };
+
+        const handleDeleteItem = (id) => {
+            const updatedTransactions = transactions.filter(item => item.id !== id);
+            updateTransactions(updatedTransactions);
+        };
+
+        const addNewItem = () => {
+            const newItem = { dia: 1, nome: '', valor: 0, id: generateUUID() };
+            updateTransactions([...transactions, newItem]);
+        };
+
+
+        // --- Savings Input Style Update ---
+        const updateSavingsInputStyle = () => {
+            const savingsInput = document.getElementById('savings-input');
+            savingsInput.className = `input-field text-center ${savingsValue >= 0 ? 'text-green-500' : 'text-red-500'}`;
+        };
+
+
+        // --- Navigation ---
+        const navigateToHome = () => {
+            document.getElementById('home-page').classList.remove('hidden');
+            document.getElementById('projecao-page').classList.add('hidden');
+            document.getElementById('navbar-link-home').classList.add('active');
+            document.getElementById('navbar-link-projecao').classList.remove('active');
+        };
+
+        const navigateToProjecao = () => {
+            document.getElementById('home-page').classList.add('hidden');
+            document.getElementById('projecao-page').classList.remove('hidden');
+            document.getElementById('navbar-link-projecao').classList.add('active');
+            document.getElementById('navbar-link-home').classList.remove('active');
+            loadProjecaoData();
+        };
+
+
+        // --- Initial Setup and Event Listeners ---
+        document.addEventListener('DOMContentLoaded', () => {
+            loadTransactionsData();
+            navigateToHome(); // Default to home page on load
+            document.getElementById('savings-display-value').textContent = formatCurrency(savingsValue);
+            updateSavingsInputStyle();
+
+            document.getElementById('savings-input').addEventListener('change', (e) => {
+                const value = Number(e.target.value);
+                updateSavings(value);
+            });
+
+            document.getElementById('calculate-button').addEventListener('click', saveTransactions);
+            document.getElementById('add-item-button').addEventListener('click', addNewItem);
+
+            const navToggleBtn = document.querySelector('.nav-toggle-btn');
+            const mainNav = document.querySelector('.main-nav');
+
+            navToggleBtn.addEventListener('click', () => {
+                mainNav.classList.toggle('open');
+            });
+
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    document.querySelectorAll('.nav-link.active').forEach(activeLink => activeLink.classList.remove('active'));
+                    this.classList.add('active');
+                    if (this.getAttribute('href') === '#projecao') {
+                        navigateToProjecao();
+                    } else {
+                        navigateToHome();
+                    }
+                    mainNav.classList.remove('open'); // Close nav on mobile after link click
+                    window.location.hash = this.getAttribute('href');
+                });
+            });
+
+
+            window.addEventListener('hashchange', () => {
+                if (window.location.hash === '#projecao') {
+                    navigateToProjecao();
+                    document.getElementById('navbar-link-projecao').classList.add('active');
+                    document.getElementById('navbar-link-home').classList.remove('active');
+                } else {
+                    navigateToHome();
+                    document.getElementById('navbar-link-home').classList.add('active');
+                    document.getElementById('navbar-link-projecao').classList.remove('active');
+                }
+            });
+
+        });
+
+
+    </script>
+</body>
+</html>
