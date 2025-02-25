@@ -1,9 +1,9 @@
 {
     "projeto1": {
-        "src": "assets/img/projects/lista-de-tarefas.png",
+        "src": "assets/img/projects/ListaTarefas.png",
         "alt": "Projeto Lista de Tarefas",
-        "width": "84px",
-        "height": "86px",
+        "width": "80%",
+        "height": "80%",
         "title": "Lista de Tarefas",
         "description": "<p>Uma lista de tarefas simples, para reconhecimento das capacidades do Angular</p>",
         "links": [
@@ -14,10 +14,10 @@
         ]
     },
     "projeto2": {
-        "src": "assets/img/projects/projecao-financeira.svg",
+        "src": "assets/img/projects/ProjecaoFinanceiraHTML.png",
         "alt": "Projeto Projeção Financeira",
-        "width": "84px",
-        "height": "86px",
+        "width": "80%",
+        "height": "80%",
         "title": "Projeção Financeira",
         "description": "<p>Permite a adição dinâmica de valores diários ou importação via JSON, com projeção e edição mensal dos dados.</p>",
         "links": [
@@ -28,10 +28,24 @@
         ]
     },
     "projeto3": {
-        "src": "assets/img/projects/relatorio-incidentes.svg",
+        "src": "assets/img/projects/ProjecaoFinanceiraNextJS.png",
+        "alt": "Projeto Projeção Financeira com NextJS",
+        "width": "80%",
+        "height": "80%",
+        "title": "Projeção Financeira com NextJS",
+        "description": "<p>A mesma ideia que o projeto anterior, mas agora com o poder do framwork NextJS.</p> <p>Permite a adição dinâmica de valores diários ou importação via JSON, com projeção e edição mensal dos dados.</p>",
+        "links": [
+            {
+                "name": "Projeção Financeira",
+                "href": "https://projecao-financeira.vercel.app/"
+            }
+        ]
+    },
+    "projeto4": {
+        "src": "assets/img/projects/RelatorioIncidentes.png",
         "alt": "Projeto Relatório de Incidentes",
-        "width": "84px",
-        "height": "86px",
+        "width": "80%",
+        "height": "80%",
         "title": "Relatório de Incidentes",
         "description": "<p>Aplicação para padronizar a documentação de testes, podendo gerar e armazenar de registros em JSON, facilitando a manutenção de uma base de dados para análises futuras.</p>",
         "links": [
@@ -41,11 +55,11 @@
             }
         ]
     },
-    "projeto4": {
-        "src": "assets/img/projects/tabela-dinamica.png",
+    "projeto5": {
+        "src": "assets/img/projects/TabelaDinamica.png",
         "alt": "Projeto Tabela Dinâmica",
-        "width": "84px",
-        "height": "86px",
+        "width": "80%",
+        "height": "80%",
         "title": "Tabela Dinâmica",
         "description": "<p>Permite análise, filtragem e soma automática de valores a partir de dados importados em formato JSON (dentro do HTML).</p>",
         "links": [
