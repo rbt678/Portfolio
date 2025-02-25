@@ -38,6 +38,10 @@
                 &:hover{
                     background: var(--primary);
                 }
+
+                img {
+                    border-radius: 5px;
+                }
             }
         }
     }
