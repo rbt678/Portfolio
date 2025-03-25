@@ -68,5 +68,19 @@
                 "href": "assets/html/tabelaDinamica.html"
             }
         ]
+    },
+    "projeto6": {
+        "src": "assets/img/projects/AmazonScraper.png",
+        "alt": "Projeto Amazon Web Scraper",
+        "width": "80%",
+        "height": "80%",
+        "title": "Amazon Web Scraper",
+        "description": "<p>Projeto Node que faz uma raspagem de dados da Amazon, buscando produtos e preços da primeira página de resultados, salvando em um arquivo JSON e servindo uma aplicação web.</p>",
+        "links": [
+            {
+                "name": "Amazon Web Scraper",
+                "href": "https://amazon-web-scraper-indol.vercel.app/"
+            }
+        ]
     }
 }
