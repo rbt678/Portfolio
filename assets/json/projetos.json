@@ -96,5 +96,19 @@
                 "href": "https://menu-para-funcionario.vercel.app/"
             }
         ]
+    },
+    "projeto8": {
+        "src": "assets/img/projects/SuspeitoTrackerApp.png",
+        "alt": "Projeto Suspeito Tracker App",
+        "width": "80%",
+        "height": "80%",
+        "title": "Suspeito Tracker App",
+        "description": "<p>Página estática usando apenas HTML e CSS, para auxiliar no rastreamento do jogo Suspeito</p>",
+        "links": [
+            {
+                "name": "Suspeito Tracker App",
+                "href": "https://rbt678.github.io/Suspeito-Tracker-App/"
+            }
+        ]
     }
 }
