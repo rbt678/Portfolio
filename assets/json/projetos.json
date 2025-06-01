@@ -82,5 +82,19 @@
                 "href": "https://amazon-web-scraper-indol.vercel.app/"
             }
         ]
+    },
+    "projeto7": {
+        "src": "assets/img/projects/MenuParaFuncionario.png",
+        "alt": "Projeto Menu Para Funcionarios de Restaurantes",
+        "width": "80%",
+        "height": "80%",
+        "title": "Menu Para Funcionarios de Restaurantes",
+        "description": "<p>Um aplicativo web para visualização de cardápio, montagem e gerenciamento de pedidos para o Menu para funcionários de restaurantes. Desenvolvido com React, TypeScript e Tailwind CSS, focado em uma experiência de usuário intuitiva e eficiente para o ponto de venda.</p>",
+        "links": [
+            {
+                "name": "Menu Para Funcionarios de Restaurantes",
+                "href": "https://menu-para-funcionario.vercel.app/"
+            }
+        ]
     }
 }
