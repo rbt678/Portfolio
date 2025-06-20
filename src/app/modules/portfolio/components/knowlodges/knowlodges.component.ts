@@ -40,5 +40,20 @@ export class KnowlodgesComponent {
       alt: "Ícone de conhecimento de python",
       data_alt: "Conhecimento de Python",
     },
+    {
+      src: "assets/icons/knowledge/typescript.svg",
+      alt: "Ícone de conhecimento de typescript",
+      data_alt: "Conhecimento de TypeScript",
+    },
+    {
+      src: "assets/icons/knowledge/aws.svg",
+      alt: "Ícone de conhecimento de aws",
+      data_alt: "Conhecimento de AWS",
+    },
+    {
+      src: "assets/icons/knowledge/nextjs.svg",
+      alt: "Ícone de conhecimento de nextjs",
+      data_alt: "Conhecimento de NextJS",
+    }
   ]);
 }

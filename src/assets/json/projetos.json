@@ -110,5 +110,19 @@
                 "href": "https://rbt678.github.io/Suspeito-Tracker-App/"
             }
         ]
+    },
+    "projeto9": {
+        "src": "assets/img/projects/ListaDeCompras.png",
+        "alt": "Projeto Lista de Compras",
+        "width": "80%",
+        "height": "80%",
+        "title": "Lista de Compras",
+        "description": "<p>Uma lista de compras simples, usando Vite e Tailwind, para reconhecimento das capacidades do Vite</p>",
+        "links": [
+            {
+                "name": "Lista de Compras",
+                "href": "https://lista-de-compras-alpha-one.vercel.app/"
+            }
+        ]
     }
 }
