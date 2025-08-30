@@ -124,5 +124,33 @@
                 "href": "https://lista-de-compras-alpha-one.vercel.app/"
             }
         ]
+    },
+    "projeto10": {
+        "src": "assets/img/projects/CofreRapido.png",
+        "alt": "Projeto Cofre Rápido",
+        "width": "80%",
+        "height": "80%",
+        "title": "Cofre Rápido",
+        "description": "<p>Este é o 'Cofre Rápido', um aplicativo de caixa (PWA - Progressive Web App) projetado para ser rápido e funcionar totalmente offline. Ele serve para ajudar operadores de caixa a gerenciar dinheiro de forma eficiente.</p><p>Suas principais funcionalidades são:</p><ul><li>Controle de Caixa Detalhado: Permite ao usuário manter um registro exato da quantidade de cada nota e moeda em sua gaveta.</li><li>Cálculo de Troco Inteligente: A principal função é a de 'Trocar Valor'. O usuário insere as notas/moedas que recebeu do cliente, e o app sugere a melhor combinação de troco a ser entregue, tentando preservar uma quantidade mínima de notas/moedas definida pelo usuário (Preferências).</li><li>Gestão de Malotes: O usuário pode criar 'malotes' (pacotes pré-definidos de moedas) para agilizar o troco. Esses malotes podem ser usados em transações ou desfeitos, retornando as moedas para a gaveta.</li><li>Movimentações Manuais: Permite registrar entradas (reforço de caixa) e saídas (sangrias) de forma detalhada.</li><li>Histórico Completo: Todas as operações são registradas com data, hora e detalhes da composição do dinheiro. É possível consultar o histórico por dia e apagar transações, ação que reverte o saldo do caixa automaticamente.</li></ul><p>Tecnicamente, ele usa o IndexedDB (através da biblioteca Dexie.js) para armazenar todos os dados no navegador, garantindo o funcionamento offline. O uso de um Service Worker o torna um PWA instalável e confiável.</p>",
+        "links": [
+            {
+                "name": "Cofre Rápido",
+                "href": "https://cofre-rapido.vercel.app/"
+            }
+        ]
+    },
+    "projeto11": {
+        "src": "assets/img/projects/Escalonador.png",
+        "alt": "Projeto Escalonador",
+        "width": "80%",
+        "height": "80%",
+        "title": "Escalonador",
+        "description": "<p>Este é um Agendador Simplificado, uma aplicação web construída com Angular projetada para que gestores criem e gerenciem escalas de trabalho de suas equipes. A aplicação funciona inteiramente no navegador, salvando todos os dados localmente no localStorage, sem a necessidade de um backend.</p><p>Principais Funcionalidades:</p><ul><li>Calendário Visual: A interface principal é um calendário mensal que exibe os funcionários alocados em diferentes turnos (ex: Manhã, Tarde).</li><li>Agendamentos Recorrentes: Permite criar escalas de trabalho que se repetem semanalmente, com datas de início e término opcionais.</li><li>Gerenciamento com Arrastar e Soltar: Você pode arrastar um agendamento para outro dia ou turno. Essa ação pode mover toda a série recorrente, dividi-la em duas, ou até mesmo juntar duas séries de um mesmo funcionário.</li><li>Detecção de Conflitos: A interface fornece feedback visual imediato se uma alteração criar um conflito na agenda de um funcionário.</li><li>Gestão Completa: Modais dedicados permitem gerenciar funcionários, turnos, períodos de ausência (como férias) e as regras de agendamento de cada um de forma detalhada.</li><li>Regras de Agendamento: É possível habilitar regras, como a exigência de um número mínimo de folgas semanais, para ajudar a manter a escala justa.</li></ul><p>Tecnicamente, o app utiliza recursos modernos do Angular, como componentes standalone e signals para gerenciamento de estado, e é estilizado com Tailwind CSS. A interface está em Português do Brasil.</p>",
+        "links": [
+            {
+                "name": "Escalonador",
+                "href": "https://escalonador.vercel.app/"
+            }
+        ]
     }
 }
