@@ -5,7 +5,7 @@
         "width": "80%",
         "height": "80%",
         "title": "Lista de Tarefas",
-        "description": "<p>Uma lista de tarefas simples, para reconhecimento das capacidades do Angular</p>",
+        "description": "<p>Uma lista de tarefas simples para gerenciar atividades diárias. Permite adicionar, remover e marcar tarefas como concluídas.</p><p><b>Tecnologias:</b> Angular.</p>",
         "links": [
             {
                 "name": "Lista de Tarefas",
@@ -19,7 +19,7 @@
         "width": "80%",
         "height": "80%",
         "title": "Projeção Financeira",
-        "description": "<p>Permite a adição dinâmica de valores diários ou importação via JSON, com projeção e edição mensal dos dados.</p>",
+        "description": "<p>Permite a adição dinâmica de valores diários ou importação via JSON, com projeção e edição mensal dos dados para um planejamento financeiro simplificado.</p><p><b>Tecnologias:</b> HTML, CSS, JavaScript.</p>",
         "links": [
             {
                 "name": "Projeção Financeira",
@@ -33,7 +33,7 @@
         "width": "80%",
         "height": "80%",
         "title": "Projeção Financeira com NextJS",
-        "description": "<p>A mesma ideia que o projeto anterior, mas agora com o poder do framwork NextJS.</p> <p>Permite a adição dinâmica de valores diários ou importação via JSON, com projeção e edição mensal dos dados.</p>",
+        "description": "<p>Uma versão aprimorada do projeto de projeção financeira, utilizando Next.js para maior performance e escalabilidade. Permite a adição de valores, importação de dados e projeção mensal.</p><p><b>Tecnologias:</b> Next.js, React, TypeScript.</p>",
         "links": [
             {
                 "name": "Projeção Financeira",
@@ -47,7 +47,7 @@
         "width": "80%",
         "height": "80%",
         "title": "Relatório de Incidentes",
-        "description": "<p>Aplicação para padronizar a documentação de testes, podendo gerar e armazenar de registros em JSON, facilitando a manutenção de uma base de dados para análises futuras.</p>",
+        "description": "<p>Uma aplicação para padronizar a documentação de testes, permitindo gerar e armazenar registros em formato JSON. Facilita a criação e manutenção de uma base de dados para análises futuras.</p><p><b>Tecnologias:</b> HTML, CSS, JavaScript.</p>",
         "links": [
             {
                 "name": "Relatório de Incidentes",
@@ -61,7 +61,7 @@
         "width": "80%",
         "height": "80%",
         "title": "Tabela Dinâmica",
-        "description": "<p>Permite análise, filtragem e soma automática de valores a partir de dados importados em formato JSON (dentro do HTML).</p>",
+        "description": "<p>Uma ferramenta que permite análise, filtragem e soma automática de valores a partir de dados importados em formato JSON, facilitando a visualização e o entendimento dos dados.</p><p><b>Tecnologias:</b> HTML, CSS, JavaScript.</p>",
         "links": [
             {
                 "name": "Tabela Dinâmica",
@@ -75,7 +75,7 @@
         "width": "80%",
         "height": "80%",
         "title": "Amazon Web Scraper",
-        "description": "<p>Projeto Node que faz uma raspagem de dados da Amazon, buscando produtos e preços da primeira página de resultados, salvando em um arquivo JSON e servindo uma aplicação web.</p>",
+        "description": "<p>Um web scraper que extrai dados de produtos e preços da primeira página de resultados da Amazon. As informações são salvas em um arquivo JSON e exibidas em uma aplicação web.</p><p><b>Tecnologias:</b> Node.js, Express.</p>",
         "links": [
             {
                 "name": "Amazon Web Scraper",
@@ -89,7 +89,7 @@
         "width": "80%",
         "height": "80%",
         "title": "Menu Para Funcionarios de Restaurantes",
-        "description": "<p>Um aplicativo web para visualização de cardápio, montagem e gerenciamento de pedidos para o Menu para funcionários de restaurantes. Desenvolvido com React, TypeScript e Tailwind CSS, focado em uma experiência de usuário intuitiva e eficiente para o ponto de venda.</p>",
+        "description": "<p>Um aplicativo web para visualização de cardápio, montagem e gerenciamento de pedidos para funcionários de restaurantes, focado em uma experiência de usuário intuitiva e eficiente para o ponto de venda.</p><p><b>Tecnologias:</b> React, TypeScript, Tailwind CSS.</p>",
         "links": [
             {
                 "name": "Menu Para Funcionarios de Restaurantes",
@@ -103,7 +103,7 @@
         "width": "80%",
         "height": "80%",
         "title": "Suspeito Tracker App",
-        "description": "<p>Página estática usando apenas HTML e CSS, para auxiliar no rastreamento do jogo Suspeito</p>",
+        "description": "<p>Uma página estática para auxiliar no rastreamento de pistas e suspeitos durante o jogo de tabuleiro 'Suspeito', melhorando a experiência da partida.</p><p><b>Tecnologias:</b> HTML, CSS.</p>",
         "links": [
             {
                 "name": "Suspeito Tracker App",
@@ -117,7 +117,7 @@
         "width": "80%",
         "height": "80%",
         "title": "Lista de Compras",
-        "description": "<p>Uma lista de compras simples, usando Vite e Tailwind, para reconhecimento das capacidades do Vite</p>",
+        "description": "<p>Uma lista de compras moderna e responsiva para organizar suas idas ao supermercado. Permite adicionar e remover itens de forma rápida e intuitiva.</p><p><b>Tecnologias:</b> Vite, React, Tailwind CSS.</p>",
         "links": [
             {
                 "name": "Lista de Compras",
@@ -131,7 +131,7 @@
         "width": "80%",
         "height": "80%",
         "title": "Cofre Rápido",
-        "description": "<p>Este é o 'Cofre Rápido', um aplicativo de caixa (PWA - Progressive Web App) projetado para ser rápido e funcionar totalmente offline. Ele serve para ajudar operadores de caixa a gerenciar dinheiro de forma eficiente.</p><p>Suas principais funcionalidades são:</p><ul><li>Controle de Caixa Detalhado: Permite ao usuário manter um registro exato da quantidade de cada nota e moeda em sua gaveta.</li><li>Cálculo de Troco Inteligente: A principal função é a de 'Trocar Valor'. O usuário insere as notas/moedas que recebeu do cliente, e o app sugere a melhor combinação de troco a ser entregue, tentando preservar uma quantidade mínima de notas/moedas definida pelo usuário (Preferências).</li><li>Gestão de Malotes: O usuário pode criar 'malotes' (pacotes pré-definidos de moedas) para agilizar o troco. Esses malotes podem ser usados em transações ou desfeitos, retornando as moedas para a gaveta.</li><li>Movimentações Manuais: Permite registrar entradas (reforço de caixa) e saídas (sangrias) de forma detalhada.</li><li>Histórico Completo: Todas as operações são registradas com data, hora e detalhes da composição do dinheiro. É possível consultar o histórico por dia e apagar transações, ação que reverte o saldo do caixa automaticamente.</li></ul><p>Tecnicamente, ele usa o IndexedDB (através da biblioteca Dexie.js) para armazenar todos os dados no navegador, garantindo o funcionamento offline. O uso de um Service Worker o torna um PWA instalável e confiável.</p>",
+        "description": "<p>Um aplicativo de caixa (PWA) projetado para ser rápido e funcionar offline. Ajuda operadores a gerenciar dinheiro, calcular troco de forma inteligente e registrar todas as movimentações, utilizando IndexedDB para armazenamento local.</p><p><b>Tecnologias:</b> HTML, CSS, JavaScript, Dexie.js.</p>",
         "links": [
             {
                 "name": "Cofre Rápido",
@@ -145,11 +145,39 @@
         "width": "80%",
         "height": "80%",
         "title": "Escalonador",
-        "description": "<p>Este é um Agendador Simplificado, uma aplicação web construída com Angular projetada para que gestores criem e gerenciem escalas de trabalho de suas equipes. A aplicação funciona inteiramente no navegador, salvando todos os dados localmente no localStorage, sem a necessidade de um backend.</p><p>Principais Funcionalidades:</p><ul><li>Calendário Visual: A interface principal é um calendário mensal que exibe os funcionários alocados em diferentes turnos (ex: Manhã, Tarde).</li><li>Agendamentos Recorrentes: Permite criar escalas de trabalho que se repetem semanalmente, com datas de início e término opcionais.</li><li>Gerenciamento com Arrastar e Soltar: Você pode arrastar um agendamento para outro dia ou turno. Essa ação pode mover toda a série recorrente, dividi-la em duas, ou até mesmo juntar duas séries de um mesmo funcionário.</li><li>Detecção de Conflitos: A interface fornece feedback visual imediato se uma alteração criar um conflito na agenda de um funcionário.</li><li>Gestão Completa: Modais dedicados permitem gerenciar funcionários, turnos, períodos de ausência (como férias) e as regras de agendamento de cada um de forma detalhada.</li><li>Regras de Agendamento: É possível habilitar regras, como a exigência de um número mínimo de folgas semanais, para ajudar a manter a escala justa.</li></ul><p>Tecnicamente, o app utiliza recursos modernos do Angular, como componentes standalone e signals para gerenciamento de estado, e é estilizado com Tailwind CSS. A interface está em Português do Brasil.</p>",
+        "description": "<p>Uma aplicação web para gestão de escalas de trabalho. Permite criar agendamentos, definir turnos e gerenciar ausências com uma interface de arrastar e soltar, funcionando totalmente no navegador com salvamento local.</p><p><b>Tecnologias:</b> Angular, Tailwind CSS, TypeScript.</p>",
         "links": [
             {
                 "name": "Escalonador",
                 "href": "https://escalonador.vercel.app/"
+            }
+        ]
+    },
+    "projeto12": {
+        "src": "assets/img/projects/CalcNote.png",
+        "alt": "Projeto CalcNote",
+        "width": "80%",
+        "height": "80%",
+        "title": "CalcNote",
+        "description": "<p>Um aplicativo de bloco de notas inteligente que combina texto de formato livre com uma calculadora poderosa em tempo real. Anote suas ideias, crie listas e realize cálculos, tudo em um só lugar. Defina variáveis, veja os resultados serem atualizados instantaneamente e sincronize suas anotações na nuvem.</p><p><b>Tecnologias:</b> Angular, Supabase, Tailwind CSS, TypeScript.</p>",
+        "links": [
+            {
+                "name": "CalcNote",
+                "href": "https://calcnote.vercel.app/"
+            }
+        ]
+    },
+    "projeto13": {
+        "src": "assets/img/projects/ControleFinanceiro.png",
+        "alt": "Projeto Controle Financeiro",
+        "width": "80%",
+        "height": "80%",
+        "title": "Controle Financeiro",
+        "description": "<p>Um aplicativo web para planejamento e controle financeiro pessoal, permitindo ao usuário projetar seus ganhos e gastos ao longo de um período customizável. Edite transações e veja o impacto futuro instantaneamente.</p><p><b>Tecnologias:</b> React, TypeScript, Tailwind CSS.</p>",
+        "links": [
+            {
+                "name": "Controle Financeiro",
+                "href": "https://controle-financeiro-mensal.vercel.app/"
             }
         ]
     }
